@@ -19,7 +19,7 @@ for index in range(100):
         device["os"] = "junos"
         device["version"] = choice(["J6.23.1", "8.43.12", "6.45", "6.03"])
     elif device["vendor"] == "arista":
-        device["os"] = "aos"
+        device["os"] = "eos"
         device["version"] = choice(["2.45", "2.55", "2.92.145", "3.01"])
     device["ip"] = "10.0.0." + str(index)
 
