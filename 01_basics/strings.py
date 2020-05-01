@@ -26,8 +26,4 @@ for item in device1_str.split(","):
     device1.append(item.strip())
 print("device1 using strip for each item:", device1)
 
-# LIST COMPREHENSION
-device1 = [item.strip() for item in device1_str.split(",")]
-print("device1 using list comprehension:", device1)
 
-# DICT COMPREHENSION
