@@ -31,10 +31,10 @@ def create_devices(num_devices=100):
             device["version"] = choice(["12.1(T).04", "14.07X", "8.12(S).010", "20.45"])
         elif device["vendor"] == "juniper":
             device["os"] = "junos"
-            device["version"] = choice(["J6.23.1", "8.43.12", "6.45", "6.03"])
+            device["version"] = choice(["12.3R12-S15", "15.1R7-S6", "18.4R2-S3", "15.1X53-D591"])
         elif device["vendor"] == "arista":
-            device["os"] = "aos"
-            device["version"] = choice(["2.45", "2.55", "2.92.145", "3.01"])
+            device["os"] = "eos"
+            device["version"] = choice(["4.24.1F", "4.23.2F", "4.22.1F", "4.21.3F"])
 
         device["ip"] = "10.0.0." + str(index)
 
@@ -44,5 +44,6 @@ def create_devices(num_devices=100):
 
 
 # --- Main program --------------------------------------------
-devices = create_devices(20)
-print("\n", tabulate(devices, headers="keys"))
+if __name__ == '__main__':
+    devices = create_devices(20)
+    print("\n", tabulate(devices, headers="keys"))
