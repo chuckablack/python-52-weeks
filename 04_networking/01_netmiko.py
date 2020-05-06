@@ -6,5 +6,5 @@ for device_type in ["csr", "nexus"]:
 
     connection = connect(device_type)
     print('connection:', connection)
-    output = connection.send_command("show running-config")
+    output = connection.send_command("show running-config formal")
     print(output)
