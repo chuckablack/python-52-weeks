@@ -40,7 +40,7 @@ while True:
     intf_counters_list = sorted([(k, v) for k, v in counters.items()])
 
     subprocess.call("clear" if os.name == "posix" else "cls")
-    print("__Name________________     __Rx Packets__   _____Rx Octets__   __Tx Packets__   _____Tx Octets__")
+    print("__Name________________     __Rx Packets__   _____Rx Octets__   __Tx Packets__   _____Tx Octets__\n")
     for intf_name, intf_counters in intf_counters_list:
         print(
             f"  {intf_name:<20}"
