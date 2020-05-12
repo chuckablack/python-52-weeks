@@ -17,14 +17,6 @@ device_csr = driver_csr(
 )
 device_csr.open()
 
-# device_nxos = driver_nxos(
-#     hostname="sbx-nxos-mgmt.cisco.com",
-#     username="admin",
-#     password="Admin_1234!",
-#     optional_args={"port": 8181},
-# )
-# device_nxos.open()
-
 
 def exit_gracefully(signal_received, frame):
     print("\n\nexiting gracefully")
