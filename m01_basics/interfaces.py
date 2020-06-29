@@ -21,7 +21,7 @@ for index in range(0, 8):
 
 device["interfaces"] = interfaces
 
-print("\nDevice without interfaces")
+print("\nDevice with interfaces")
 for key, value in device.items():
     if key != "interfaces":
         print(f"{key:>16s} : {value}")

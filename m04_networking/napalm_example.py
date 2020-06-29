@@ -23,3 +23,6 @@ with driver(hostname='ios-xe-mgmt-latest.cisco.com',
 
     print("\n----- interface counters ----------")
     print(json.dumps(device.get_interfaces_counters(), sort_keys=True, indent=4))
+
+    print("\n----- environment ----------")
+    print(json.dumps(device.get_environment(), sort_keys=True, indent=4))

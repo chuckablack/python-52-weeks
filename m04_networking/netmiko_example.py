@@ -1,4 +1,3 @@
-from netmiko import Netmiko
 from connect import connect
 
 
