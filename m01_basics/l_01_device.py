@@ -3,11 +3,11 @@ from pprint import pprint
 
 # DICTIONARY representing a device
 device = {
-    "name": "r3-L-K2",
+    "name": "sbx-n9kv-ao",
     "vendor": "cisco",
-    "model": "catalyst-2690",
-    "os": "iosxe",
-    "version": "12.2SE",
+    "model": "Nexus9000 C9300v Chassis",
+    "os": "nxos",
+    "version": "9.3(3)",
     "ip": "10.1.1.1",
 }
 

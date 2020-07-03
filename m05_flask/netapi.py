@@ -1,6 +1,6 @@
 import json
 from flask import Flask, request
-from m02_files.inventory import get_inventory
+from m02_files.l_00_inventory import get_inventory
 import napalm
 
 
