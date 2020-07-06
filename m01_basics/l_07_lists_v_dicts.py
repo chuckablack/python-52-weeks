@@ -48,5 +48,5 @@ def create_devices(num_devices=1, num_subnets=1):
 # --- Main program --------------------------------------------
 if __name__ == '__main__':
 
-    devices = create_devices(num_devices=20, num_subnets=4)
+    devices = create_devices(num_devices=254, num_subnets=254)
     print("\n", tabulate(devices, headers="keys"))
