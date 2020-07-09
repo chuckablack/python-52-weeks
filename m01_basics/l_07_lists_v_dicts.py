@@ -1,12 +1,14 @@
 from random import choice
 import string
 from tabulate import tabulate
+import time
 
 
 def create_devices(num_devices=1, num_subnets=1):
 
     # CREATE LIST OF DEVICES
     created_devices = list()
+    created_devices_dict = dict()
 
     if num_devices > 254 or num_subnets > 254:
         print("Error: too many devices and/or subnets requested")
@@ -41,12 +43,40 @@ def create_devices(num_devices=1, num_subnets=1):
             device["ip"] = "10.0." + str(subnet_index) + "." + str(device_index)
 
             created_devices.append(device)
+            created_devices_dict[device["ip"]] = device
 
-    return created_devices
+    return created_devices, created_devices_dict
 
 
 # --- Main program --------------------------------------------
 if __name__ == '__main__':
 
-    devices = create_devices(num_devices=254, num_subnets=254)
+    devices, devices_dict = create_devices(num_devices=254, num_subnets=254)
     print("\n", tabulate(devices, headers="keys"))
+
+    while True:
+
+        ip_to_find = input("\nEnter IP address to find: ")
+        if not ip_to_find:
+            break
+
+        start = time.time()
+        for device in devices:
+            if device["ip"] == ip_to_find:
+                print(f"---> found it (list): {device}")
+                list_search_time = (time.time() - start) * 1000
+                print(f"--- ---> in:  {list_search_time} msec")
+                print(f"--- ---> id of device:", id(device))
+                break
+        else:
+            print(f"---! IP address not found, try again")
+            break
+
+        start = time.time()
+        if ip_to_find in devices_dict:
+            print(f"---> found it (dict): {devices_dict[ip_to_find]}")
+            dict_search_time = (time.time() - start) * 1000
+            print(f"--- ---> in:  {dict_search_time} msec")
+            print(f"--- ---> id of device:", id(devices_dict[ip_to_find]))
+
+        print(f"conclusion: dictionary search was {int(list_search_time/dict_search_time)} faster than list search")
