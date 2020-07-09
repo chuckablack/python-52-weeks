@@ -12,15 +12,15 @@ device = {
 }
 
 # SIMPLE PRINT
-print("\nSIMPLE PRINT")
+print("\n_____ SIMPLE PRINT ____________________")
 print("device:", device)
 print("device name:", device["name"])
 
 # PRETTY PRINT
-print("\nPRETTY PRINT")
+print("\n_____ PRETTY PRINT ____________________")
 pprint(device)
 
 # FOR LOOP, NICELY FORMATTED PRINT
-print("\nFOR LOOP, USING F-STRING")
+print("\n_____ FOR LOOP, USING F-STRING ____________________")
 for key, value in device.items():
     print(f"{key:>16s} : {value}")
