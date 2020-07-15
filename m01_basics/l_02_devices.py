@@ -2,6 +2,7 @@ from random import choice
 import string
 from tabulate import tabulate
 from operator import itemgetter
+from pprint import pprint
 
 devices = list()   # CREATE EMPTY LIST FOR HOLDING DEVICES
 
@@ -39,6 +40,10 @@ for index in range(100):
     # ADD THIS DEVICE TO THE LIST OF DEVICES
     devices.append(device)
 
+# USE PPRINT TO PRINT DATA AS-IS
+print("\n----- DEViCES AS LIST OF DICTS --------------------")
+pprint(devices)
+
 # USE 'TABULATE' TO PRINT TABLE OF DEVICES
-print()
+print("\n----- SORTED DEVICES IN TABULAR FORMAT --------------------")
 print(tabulate(sorted(devices, key=itemgetter("vendor", "os", "version")), headers="keys"))
