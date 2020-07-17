@@ -75,3 +75,14 @@ for device in [csr_device_1, csr_device_2]:
             print(f"        name: {name[0].firstChild.nodeValue}")
         else:
             print(f"        Unable to retrieve name from username!")
+
+    version = xml_doc.getElementsByTagName("version")
+    print(f"\n----- Device OS version, hostname, email from: {device['host']}")
+    if len(version) > 0:
+        print(f"        version: {version[0].firstChild.nodeValue}")
+    else:
+        print(f"        Unable to retrieve version!")
+
+    config = nc_connection.get_config("running")
+    print(f"\n----- XML get() output from: {device['host']}")
+    print(str(etree.tostring(config.data_ele, pretty_print=True).decode()))
