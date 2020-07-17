@@ -7,7 +7,7 @@ from pprint import pprint
 devices = list()   # CREATE EMPTY LIST FOR HOLDING DEVICES
 
 # FOR LOOP TO CREATE LARGE NUMBER OF DEVICES
-for index in range(100):
+for index in range(1, 10):
 
     # CREATE DEVICE DICTIONARY
     device = dict()
