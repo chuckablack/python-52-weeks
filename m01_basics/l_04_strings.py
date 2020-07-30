@@ -1,8 +1,4 @@
 device1_str = "  r3-L-n7, cisco, catalyst 2960, ios  "
-device2_str = "  r3-U-n7, cisco, catalyst 2960, ios  "
-device3_str = "r5-U-n7, juniper, mx10003, junos"
-device4_str = "r5-L-n7, juniper, mx10003, junos"
-device5_str = "r6-U-n7, arista, 720XP, eos"
 
 # SPLIT
 print("STRING STRIP, SPLIT, REPLACE")

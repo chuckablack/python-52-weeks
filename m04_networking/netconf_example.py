@@ -28,6 +28,7 @@ nxos_device = {
 }
 
 for device in [csr_device_1, csr_device_2]:
+# for device in [nxos_device]:
 
     print(f"\n----- Retrieving XML configuration from: {device['host']} --------------------")
     nc_connection = manager.connect(
@@ -38,6 +39,28 @@ for device in [csr_device_1, csr_device_2]:
         device_params=device["device_params"],
         hostkey_verify=False,
     )
+
+    if device["device_params"]["name"] == "nexus":
+
+        serial_number_xml_nxos = '<System xmlns="http://cisco.com/ns/yang/cisco-nx-os-device"><serial/></System>'
+        version_xml_nxos = '<System xmlns="http://cisco.com/ns/yang/cisco-nx-os-device"><version/></System>'
+
+        rsp = nc_connection.get(('subtree', serial_number_xml_nxos))
+        print(f"\n----- XML get() serial number subtree from: {device['host']}")
+        print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
+
+        vlans_filter = '''
+                        <System xmlns="http://cisco.com/ns/yang/cisco-nx-os-device">
+                            <vlan>
+                            </vlan>
+                        </System>
+                       '''
+        rsp = nc_connection.get(('subtree', vlans_filter))
+
+        rsp = nc_connection.get(('subtree', version_xml_nxos))
+        print(f"\n----- XML get() version subtree from: {device['host']}")
+        print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
+
 
     config = nc_connection.get_config("running")
     print(f"\n----- XML get_config() output from: {device['host']}")
@@ -82,6 +105,15 @@ for device in [csr_device_1, csr_device_2]:
         print(f"        version: {version[0].firstChild.nodeValue}")
     else:
         print(f"        Unable to retrieve version!")
+
+    version_xml_get = """
+    <native xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-native">
+    <version></version>
+    </native>
+    """
+    rsp = nc_connection.get(("subtree", version_xml_get))
+    print(f"\n----- XML get() version subtree from: {device['host']}")
+    print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
 
     config = nc_connection.get_config("running")
     print(f"\n----- XML get() output from: {device['host']}")
