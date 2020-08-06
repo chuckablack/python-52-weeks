@@ -22,7 +22,7 @@ for packet in capture:
     print(packet)
 
 # CAPTURE AND HANDLE PACKETS AS THEY ARRIVE
-print("\n\n----- Print packets as they are detected to/from specified host ---------------------")
+print("\n\n----- Print packets as they are detected ---------------------")
 capture = pyshark.LiveCapture(interface='enp0s3', only_summaries=True, bpf_filter='tcp port https')
 
 
@@ -31,3 +31,9 @@ def print_packet(pkt):
 
 
 capture.apply_on_packets(print_packet, packet_count=20)
+
+
+# CAPTURE AND HANDLE PACKETS AS THEY ARRIVE USING LAMBDA
+print("\n\n----- Print packets as they are detected (lambda version) ---------------------")
+capture = pyshark.LiveCapture(interface='enp0s3', only_summaries=True, bpf_filter='tcp port https')
+capture.apply_on_packets(lambda pkt: print("lambda    ", pkt), packet_count=20)

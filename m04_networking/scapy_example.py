@@ -20,11 +20,19 @@ for packet in capture:
 
 
 # CAPTURE AND HANDLE PACKETS AS THEY ARRIVE
+print("\n\n----- Capture and print packets as sniffed ---------------------")
+
+
 def print_packet(pkt):
-    print("    ", pkt.show())
+    print("    ", pkt.summary())
 
 
 scapy.sniff(iface='enp0s3', prn=print_packet, filter="tcp port https", count=10)
+
+
+# CAPTURE AND HANDLE PACKETS AS THEY ARRIVE USing LAMBDA
+print("\n\n----- Capture and print packets as sniffed (using lambda) ---------------------")
+scapy.sniff(iface='enp0s3', prn=lambda pkt: print(f"lambda    {pkt.summary()}"), filter="tcp port https", count=10)
 
 # DISCOVER HOSTS ON NETWORKING USING MANUAL ARP PING
 print("\n\n----- Discovery hosts on network using manual ARP ping ---------------------")
