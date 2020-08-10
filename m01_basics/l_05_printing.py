@@ -2,6 +2,8 @@ from l_03_functions import create_devices
 from pprint import pprint
 from operator import itemgetter
 from tabulate import tabulate
+from datetime import datetime
+from time import sleep
 
 devices = create_devices(25)
 
@@ -13,13 +15,19 @@ pprint(devices)
 
 print("\n\nUSING LOOP")
 for device in devices:
+    sleep(0.1)
+    device["last_heard"] = str(datetime.now())
     print(device)
 
 print("\n\nUSING TABULATE")
-print(tabulate(sorted(devices, key=itemgetter("vendor", "os", "version")), headers="keys"))
+print(
+    tabulate(sorted(devices, key=itemgetter("vendor", "os", "version")), headers="keys")
+)
 
 print("\n\nUSING LOOP AND F-STRING")
-print("        NAME      VENDOR  OS      IP ADDRESS")
-print("       -----     -------  -----   -----------")
+print("   NAME      VENDOR : OS      IP ADDRESS       LAST HEARD")
+print("  -----     -------   -----   --------------   ----------------------")
 for device in devices:
-    print(f'    {device["name"]:>8}  {device["vendor"]:>10}  {device["os"]:<6}  {device["ip"]:<15}')
+    print(
+        f'{device["name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["last_heard"][:-4]}'
+    )

@@ -1,6 +1,6 @@
 import scapy.all as scapy
 from scapy.layers.l2 import Ether, ARP
-from scapy.layers.inet import IP, ICMP
+from scapy.layers.inet import IP, ICMP, TCP
 
 # CAPTURE EVERYTHING AND PRINT PACKET SUMMARIES
 print("\n----- Packet summaries --------------------")
@@ -49,7 +49,12 @@ for res in ans.res:
 
 # DISCOVER HOSTS ON NETWORKING USING ICMP PING
 # print("\n\n----- Discovery hosts on network using ICMP ping ---------------------")
-# ans, unans = scapy.sr(IP(dst="192.168.254.1-254")/ICMP(), iface='enp0s3')
-# print("Done???")
+# ans, unans = scapy.sr(IP(dst="192.168.254.1-254")/ICMP(), timeout=1)
 # ans.summary()
 
+# TCP PORT SCAN
+print("\n\n----- See what ports are open on a device --------------------")
+# answers, unans = scapy.sr(IP(dst="192.168.254.254")/TCP(flags="S", sport=666, dport=[22, 80, 21, 443]), timeout=1)
+answers, unans = scapy.sr(IP(dst="192.168.254.89")/TCP(flags="S", dport=(1, 1024)), timeout=5)
+for answer in answers:
+    print(f"---> open port: {answer[0].summary()}")
