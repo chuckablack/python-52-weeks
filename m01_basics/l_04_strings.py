@@ -43,7 +43,7 @@ else:
     print(f"didn't match: {model}")
 
 model = "CSR1000V"
-if model.lower() == "csr1000v":
+if model.lower() == "csR1000v".lower():
     print(f"matched using lower(): {model}")
 else:
     print(f"didn't match: {model}")
@@ -61,8 +61,8 @@ else:
 # SEPARATING STRING COMPONENTS
 print("\n\nSEPARATING VERSION STRING COMPONENTS")
 version_info = version.split(",")
-for version_info_part in version_info:
-    print(f"version part: {version_info_part.strip()}")
+for part_no, version_info_part in enumerate(version_info):
+    print(f"version part {part_no}: {version_info_part.strip()}")
 
 show_interface_stats = """
 GigabitEthernet1
@@ -101,14 +101,12 @@ Loopback100
 
 interface_counters = dict()
 show_interface_stats_lines = show_interface_stats.splitlines()
-# pprint(show_interface_stats_lines)
 for index, stats_line in enumerate(show_interface_stats_lines):
     if stats_line.find('GigabitEthernet', 0) == 0:
 
         totals_line = show_interface_stats_lines[index + 5]
-        # print(f"found {stats_line} with totals: {totals_line.split()}")
-
         interface_counters[stats_line] = totals_line.split()[1:]
+
 print("\n\n----- Interface Counters --------------------")
 pprint(interface_counters)
 
