@@ -4,7 +4,7 @@ import json
 
 print("\n----- connecting to device (SSH) ----------")
 driver = napalm.get_network_driver('ios')
-with driver(hostname='ios-xe-mgmt-latest.cisco.com',
+with driver(hostname='ios-xe-mgmt.cisco.com',
             username='developer',
             password='C1sco12345',
             optional_args={'port': 8181}) as device:
