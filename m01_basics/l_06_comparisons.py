@@ -26,7 +26,7 @@ for device in devices:
         standard_versions[vendor_os] = device["version"]
 pprint(standard_versions)
 
-print("\n----- Create list of non-compliant devices for each vendor:os --------------------")
+print("\n----- Create list of non-compliant device OS versions for each vendor:os --------------------")
 non_compliant_devices = dict()
 for vendor_os, _ in standard_versions.items():
     non_compliant_devices[vendor_os] = []
