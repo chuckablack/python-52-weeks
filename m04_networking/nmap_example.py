@@ -10,8 +10,11 @@ while True:
         break
 
     print(f"\n--- beginning scan of {ip}")
-    nm.scan(ip, '21-443')
+    output = nm.scan(ip, '22-1024', arguments="-sS -sU -O --host-time 600")
     print(f"--- --- command: {nm.command_line()}")
+
+    print("----- nmap scan output -------------------")
+    pprint(output)
 
     try:
         pprint(nm[ip].all_tcp())
