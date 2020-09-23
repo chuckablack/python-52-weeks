@@ -37,3 +37,42 @@ for device in devices:
         non_compliant_devices[vendor_os].append(device["ip"] + " version: " + device["version"])
 
 pprint(non_compliant_devices)
+
+print("\n----- Assignment, copy, and deep copy --------------------")
+devices2 = devices
+devices[0]["name"] = "this is a dumb device name"
+if devices2 == devices:
+    print("\n    Assignment and modification: devices2 STILL equals devices")
+    print("    ---> Moral: Assignment is NOT the same as copy!")
+else:
+    print("    Huh?")
+
+from copy import copy
+from copy import deepcopy
+
+devices2 = copy(devices)
+devices2[0]["name"] = "this also is a dumb device name"
+if devices2 == devices:
+    print("\n    Shallow copy and modification: devices2 STILL equals devices")
+    print("    ---> Moral: 'copy()' only does a SHALLOW (1st level) copy!")
+    print("    ---> Result: Uh-oh - I just screwed up the original version!!")
+else:
+    print("    Huh?")
+
+devices2 = deepcopy(devices)
+devices2[0]["name"] = "this is ANOTHER dumb device name"
+if devices2 == devices:
+    print("    Huh?")
+else:
+    print("\n    Deep copy and modification: devices2 no longer equals devices")
+    print("    ---> Moral: 'deepcopy()' gives you a complete copy of the original!")
+    print("    ---> Result: I can do whatever I want with my copy, without touching the original!!")
+
+
+new_set_of_devices = create_devices(num_subnets=2, num_devices=25)
+if new_set_of_devices == devices:
+    print("    Huh?")
+else:
+    print("\n    Comparisons of complex, deep data is easy in Python")
+    print("    ---> Moral: you can compare any two data structures, no matter how deeply nested")
+
