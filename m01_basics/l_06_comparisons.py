@@ -1,5 +1,7 @@
 from l_03_functions import create_devices
 from pprint import pprint
+from random import randint, uniform
+from datetime import datetime
 
 devices = create_devices(num_subnets=2, num_devices=25)
 print("   NAME      VENDOR : OS      IP ADDRESS       VERSION")
@@ -38,7 +40,7 @@ for device in devices:
 
 pprint(non_compliant_devices)
 
-print("\n----- Assignment, copy, and deep copy --------------------")
+print("\n\n----- Assignment, copy, and deep copy --------------------")
 devices2 = devices
 devices[0]["name"] = "this is a dumb device name"
 if devices2 == devices:
@@ -75,4 +77,53 @@ if new_set_of_devices == devices:
 else:
     print("\n    Comparisons of complex, deep data is easy in Python")
     print("    ---> Moral: you can compare any two data structures, no matter how deeply nested")
+
+
+print("\n\n----- Comparisons for implementing SLAs --------------------\n")
+SLA_AVAILABILITY = 95
+SLA_RESPONSE_TIME = 1.0
+
+devices = create_devices(num_subnets=2, num_devices=25)
+for device in devices:
+
+    device["availability"] = randint(94, 100)
+    device["response_time"] = uniform(0.5, 1.1)
+
+    if device["availability"] < SLA_AVAILABILITY:
+        print(f"{datetime.now()}: {device['name']:6} - Availability {device['availability']} < {SLA_AVAILABILITY}")
+    if device["response_time"] > SLA_RESPONSE_TIME:
+        print(f"{datetime.now()}: {device['name']:6} - Response Time {device['response_time']:.3f} > {SLA_RESPONSE_TIME}")
+
+
+print("\n\n----- Comparing classes --------------------")
+
+
+class Device:
+
+    def __init__(self, name, ip):
+        self.name = name
+        self.ip_address = ip
+
+    def __eq__(self, other):
+        if not isinstance(other, Device):
+            return False
+        return self.name == other.name and self.ip_address == other.ip_address
+
+
+d1 = Device("device 1", "10.10.10.1")
+d1_same = Device("device 1", "10.10.10.1")
+d1_different = Device("device 2", "10.10.10.2")
+
+if d1 == d1_same:
+    print(f"    ---> success: {d1} equals {d1_same}")
+else:
+    print(f"    !!! uh-oh, classes not equal and they should be")
+if d1 == d1_different:
+    print(f"    !!! uh-oh, classes equal and they should not be")
+else:
+    print(f"    ---> success: {d1} not equal to {d1_different}")
+
+
+
+
 
