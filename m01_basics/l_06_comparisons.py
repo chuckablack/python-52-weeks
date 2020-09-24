@@ -98,31 +98,53 @@ for device in devices:
 print("\n\n----- Comparing classes --------------------")
 
 
-class Device:
+class DeviceWithEq:
 
     def __init__(self, name, ip):
         self.name = name
         self.ip_address = ip
 
     def __eq__(self, other):
-        if not isinstance(other, Device):
+        if not isinstance(other, DeviceWithEq):
             return False
         return self.name == other.name and self.ip_address == other.ip_address
 
 
-d1 = Device("device 1", "10.10.10.1")
-d1_same = Device("device 1", "10.10.10.1")
-d1_different = Device("device 2", "10.10.10.2")
+d1 = DeviceWithEq("device 1", "10.10.10.1")
+d1_equal = DeviceWithEq("device 1", "10.10.10.1")
+d1_different = DeviceWithEq("device 2", "10.10.10.2")
 
-if d1 == d1_same:
-    print(f"    ---> success: {d1} equals {d1_same}")
+print("\n    Comparison with an __eq__ method to handle evaluation")
+if d1 == d1_equal:
+    print(f"    ---> using __eq__ : success: {d1} equals {d1_equal}")
 else:
-    print(f"    !!! uh-oh, classes not equal and they should be")
+    print(f"    !!! using __eq__ : uh-oh, classes not equal and they should be")
 if d1 == d1_different:
-    print(f"    !!! uh-oh, classes equal and they should not be")
+    print(f"    !!! using __eq__ : uh-oh, classes equal and they should not be")
 else:
-    print(f"    ---> success: {d1} not equal to {d1_different}")
+    print(f"    ---> using __eq__ : success: {d1} not equal to {d1_different}")
 
+
+class DeviceWithNoEq:
+
+    def __init__(self, name, ip):
+        self.name = name
+        self.ip_address = ip
+
+
+d1 = DeviceWithNoEq("device 1", "10.10.10.1")
+d1_equal = DeviceWithNoEq("device 1", "10.10.10.1")
+d1_same = d1
+
+print("\n    Comparison WITHOUT an __eq__ method to handle evaluation")
+if d1 == d1_equal:
+    print(f"    !!! with no __eq__ : oops, didn't expect this")
+else:
+    print(f"    ---> with no __eq__ : success: not equal, as expected")
+if d1 == d1_same:
+    print(f"    ---> with no __eq__ : success: {d1} points to same object instance as {d1_same}")
+else:
+    print(f"    !!! with no __eq__ : oops, didn't expect this")
 
 
 
