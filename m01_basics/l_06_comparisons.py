@@ -1,21 +1,27 @@
-from l_03_functions import create_devices
+from util.create_utils import create_devices
 from pprint import pprint
 from random import randint, uniform
 from datetime import datetime
 
 devices = create_devices(num_subnets=2, num_devices=25)
-print("   NAME      VENDOR : OS      IP ADDRESS       VERSION")
+print("\n   NAME      VENDOR : OS      IP ADDRESS       VERSION")
 print("  -----     -------   -----   --------------   -----------")
 for device in devices:
     print(
         f'{device["name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["version"]}'
     )
 
+print("\n   NAME      VENDOR : OS      IP ADDRESS       VERSION")
+print("  -----     -------   -----   --------------   -----------")
+for device in devices:
+    if device["vendor"].lower() != "cisco":
+        print(
+            f'{device["name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["version"]}'
+        )
+
 print("\n----- Starting comparison of device names --------------------")
 for index, device_a in enumerate(devices):
-    for device_b in devices[index:]:
-        if device_a["ip"] == device_b["ip"]:
-            continue
+    for device_b in devices[index+1:]:
         if device_a["name"] == device_b["name"]:
             print(f"Found match! {device_a['name']} for both {device_a['ip']} and {device_b['ip']}")
 print("----- Comparison of device names completed")
@@ -80,7 +86,7 @@ else:
 
 
 print("\n\n----- Comparisons for implementing SLAs --------------------\n")
-SLA_AVAILABILITY = 95
+SLA_AVAILABILITY = 96
 SLA_RESPONSE_TIME = 1.0
 
 devices = create_devices(num_subnets=2, num_devices=25)
