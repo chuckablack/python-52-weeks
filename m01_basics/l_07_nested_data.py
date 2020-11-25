@@ -13,7 +13,7 @@ device = {
     ]
 }
 
-print("\nDevice without interfaces")
+print("\n\n----- device with no interfaces --------------------")
 for key, value in device.items():
     print(f"{key:>16s} : {value}")
 
@@ -27,7 +27,7 @@ for index in range(0, 8):
 
 device["interfaces"] = interfaces
 
-print("\nDevice with interfaces")
+print("\n\n----- device with interfaces --------------------")
 for key, value in device.items():
     if key != "interfaces":
         print(f"{key:>16s} : {value}")
@@ -37,18 +37,19 @@ for key, value in device.items():
             print(f"\t\t\t\t\t{interface}")
 
 print()
+print("\n\n----- device with interfaces using pprint--------------------")
 pprint(device)
 
 print("\n\n----- network with devices and interfaces --------------------")
 network = create_network(num_devices=4, num_subnets=4)
 pprint(network)
 
-print("\nInformation about network:")
+print("\n----- information about network --------------------")
 print(f"-- number of subnets: {len(network['subnets'])}")
 print(f"-- list of subnets:   {network['subnets'].keys()}")
 print(f"-- list of subnets w/o extraneous: {', '.join(network['subnets'])}")
 
-print("\nNetwork and devices nicely formatted")
+print("\n----- network and devices nicely formatted --------------------")
 for subnet_address, subnet in network["subnets"].items():
     print(f"\n-- subnet: {subnet_address}")
     for device in subnet["devices"]:
