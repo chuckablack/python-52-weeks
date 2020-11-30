@@ -4,11 +4,27 @@ from tabulate import tabulate
 from operator import itemgetter
 from enum import Enum
 
+# CISCO = "cisco"
+# JUNIPER = "juniper"
+# ARISTA = "arista"
+
 
 class Vendor(Enum):
-    cisco = "cisco"
-    juniper = "juniper"
-    arista = "arista"
+    CISCO = "cisco"
+    JUNIPER = "juniper"
+    ARISTA = "arista"
+
+
+# class Vendor:
+#     CISCO = "cisco"
+#     JUNIPER = "juniper"
+#     ARISTA = "arista"
+
+
+# class Vendor(Enum):
+#     CISCO = 1
+#     JUNIPER = 2
+#     ARISTA = 3
 
 
 devices = list()   # CREATE EMPTY LIST FOR HOLDING DEVICES
@@ -27,14 +43,14 @@ for index in range(20):
     )
 
     # RANDOM VENDOR FROM CHOICE OF CISCO, JUNIPER, ARISTA
-    device["vendor"] = choice([Vendor.cisco.value, Vendor.juniper.value, Vendor.arista.value])
-    if device["vendor"] == Vendor.cisco.value:
+    device["vendor"] = choice([Vendor.CISCO.value, Vendor.JUNIPER.value, Vendor.ARISTA.value])
+    if device["vendor"] == Vendor.CISCO.value:
         device["os"] = choice(["ios", "iosxe", "iosxr", "nexus"])
         device["version"] = choice(["12.1(T).04", "14.07X", "8.12(S).010", "20.45"])
-    elif device["vendor"] == Vendor.juniper.value:
+    elif device["vendor"] == Vendor.JUNIPER.value:
         device["os"] = "junos"
         device["version"] = choice(["J6.23.1", "8.43.12", "6.45", "6.03"])
-    elif device["vendor"] == Vendor.arista.value:
+    elif device["vendor"] == Vendor.ARISTA.value:
         device["os"] = "eos"
         device["version"] = choice(["2.45", "2.55", "2.92.145", "3.01"])
     device["ip"] = "10.0.0." + str(index)

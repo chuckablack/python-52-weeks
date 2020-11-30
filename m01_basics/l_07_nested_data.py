@@ -10,6 +10,7 @@ device = {
     "model": "catalyst 2960",
     "os": "ios",
     "interfaces": [
+
     ]
 }
 
@@ -59,12 +60,12 @@ print("\n\n----- remember assignment vs shallow copy vs deep copy --------------
 print("      modify 'network' only, and see if assign/copy/deepcopy versions reflect that change")
 network_assign = network
 network["subnets"]["10.0.1.0"]["devices"][0]["name"] = "different name assigned"
-print(f"  --- network != network_assign :    {network!=network_assign}")
+print(f"  --- network == network_assign :    {network==network_assign}")
 
 network_copy = copy.copy(network)
 network["subnets"]["10.0.1.0"]["devices"][0]["name"] = "another different name, copy this time"
-print(f"  --- network != network_copy :      {network!=network_copy}")
+print(f"  --- network == network_copy :      {network==network_copy}")
 
 network_deepcopy = copy.deepcopy(network)
 network["subnets"]["10.0.1.0"]["devices"][0]["name"] = "this time with deep copy"
-print(f"  --- network != network_deepcopy :  {network!=network_deepcopy}")
+print(f"  --- network == network_deepcopy :  {network==network_deepcopy}")
