@@ -48,6 +48,18 @@ for index in range(20):
         + choice(string.ascii_letters)
     )
 
+    # USING LITERALS: RANDOM VENDOR FROM CHOICE OF CISCO, JUNIPER, ARISTA
+    # device["vendor"] = choice(["cisco", "juniper", "arista"])
+    # if device["vendor"] == "cisco":
+    #     device["os"] = choice(["ios", "iosxe", "iosxr", "nexus"])
+    #     device["version"] = choice(["12.1(T).04", "14.07X", "8.12(S).010", "20.45"])
+    # elif device["vendor"] == "juniper":
+    #     device["os"] = "junos"
+    #     device["version"] = choice(["J6.23.1", "8.43.12", "6.45", "6.03"])
+    # elif device["vendor"] == "arista":
+    #     device["os"] = "eos"
+    #     device["version"] = choice(["2.45", "2.55", "2.92.145", "3.01"])
+
     # USING CONSTANTS: RANDOM VENDOR FROM CHOICE OF CISCO, JUNIPER, ARISTA
     # device["vendor"] = choice([CISCO, JUNIPER, ARISTA])
     # if device["vendor"] == CISCO:
