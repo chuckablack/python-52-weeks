@@ -50,8 +50,6 @@ def create_devices(num_devices=1, num_subnets=1):
             created_devices.append(device)
             print(".", end="")
 
-        print()
-
     print("completed device creation")
     return created_devices
 
