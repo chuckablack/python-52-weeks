@@ -15,6 +15,8 @@ if __name__ == '__main__':
     for device in devices:
         devices_dict[device["ip"]] = device
 
+    devices_gen = create_devices_gen(num_devices=254, num_subnets=254)
+
     print("calculating tabular output of devices ...")
     print("\n", tabulate(devices, headers="keys"))
 
@@ -25,11 +27,11 @@ if __name__ == '__main__':
             break
 
         start = time.time()
-        for device in devices:
+        for device in devices_gen:
             if device["ip"] == ip_to_find:
-                print(f"---> found it (list): {device}")
-                list_search_time = (time.time() - start) * 1000
-                print(f"--- ---> in:  {list_search_time} msec")
+                print(f"---> found it (generator): {device}")
+                generator_search_time = (time.time() - start) * 1000
+                print(f"--- ---> in:  {generator_search_time} msec")
                 print(f"--- ---> id of device:", id(device))
                 break
         else:
@@ -43,4 +45,4 @@ if __name__ == '__main__':
             print(f"--- ---> in:  {dict_search_time} msec")
             print(f"--- ---> id of device:", id(devices_dict[ip_to_find]))
 
-        print(f"conclusion: dictionary search was {int(list_search_time/dict_search_time)} times faster than list search")
+        print(f"conclusion: dictionary search was {int(generator_search_time/dict_search_time)} times faster than generator search")
