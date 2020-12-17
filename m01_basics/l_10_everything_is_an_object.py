@@ -16,13 +16,13 @@ print("----- List variables, which are MUTABLE --------------------")
 l1 = [1]
 print(f"l1: {l1}, id(l1): {id(l1)}  <--- original l1")
 l1.append(2)
-print(f"l1: {l1}, id(l1): {id(l1)}  <--- l1.append(2)")
+print(f"l1: {l1}, id(l1): {id(l1)}  <--- after l1.append(2)")
 l2 = l1
 print(f"\nl1: {l1}, id(l1): {id(l1)}")
-print(f"l2: {l2}, id(l2): {id(l2)}  <--- l2 = l1")
+print(f"l2: {l2}, id(l2): {id(l2)}  <--- after l2 = l1")
 l1.append(3)
 print(f"\nl1: {l1}, id(l1): {id(l1)}")
-print(f"l2: {l2}, id(l2): {id(l2)}  <--- l1.append(3)")
+print(f"l2: {l2}, id(l2): {id(l2)}  <--- after l1.append(3)")
 
 print("\n\n")
 print("----- Function call, where immutable vs mutable is especially important --------------------")
