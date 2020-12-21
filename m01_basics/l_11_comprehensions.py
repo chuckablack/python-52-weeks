@@ -10,6 +10,11 @@ print("\ndevice using for loop:\n\t\t", device)
 device = [item.strip() for item in device_str.split(",")]
 print("\ndevice using list comprehension:\n\t\t", device)
 
+# SIMPLER LIST COMPREHENSION
+device_info_list = device_str.split(",")
+device = [item.strip() for item in device_info_list]
+print("\ndevice using simpler list comprehension:\n\t\t", device)
+
 # LIST COMPREHENSION WITH CONDITIONAL
 device = [item.strip() for item in device_str.split(",") if "stupid" not in item]
 print("\ndevice using list comprehension with conditional:\n\t\t", device)

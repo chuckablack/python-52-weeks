@@ -1,7 +1,4 @@
-from util.create_utils import create_devices, create_devices_gen
-from random import choice
-import string
-from tabulate import tabulate
+from util.create_utils import create_device, create_devices, create_devices_gen
 import time
 
 
@@ -17,8 +14,8 @@ if __name__ == '__main__':
 
     devices_gen = create_devices_gen(num_devices=254, num_subnets=254)
 
-    print("calculating tabular output of devices ...")
-    print("\n", tabulate(devices, headers="keys"))
+    # print("calculating tabular output of devices ...")
+    # print("\n", tabulate(devices, headers="keys"))
 
     while True:
 
@@ -46,3 +43,15 @@ if __name__ == '__main__':
             print(f"--- ---> id of device:", id(devices_dict[ip_to_find]))
 
         print(f"conclusion: dictionary search was {int(generator_search_time/dict_search_time)} times faster than generator search")
+
+    # SIMPLE GENERATOR COMPREHENSION
+    print("\n\n____ DEVICE INFO PARSING USING GENERATOR COMPREHENSION ____________________\n")
+    device_str = "  r3-L-n7, cisco, catalyst 2960, ios , extra stupid stuff "
+    device = [item.strip() for item in (device_str.split(","))]
+    print("device using generator comprehension:\n\t\t", device)
+
+    # MORE INTERESTING GENERATOR COMPREHENSION
+    print("\n\n____ DEVICE CREATION USING GENERATOR COMPREHENSION ____________________\n")
+    devices_gen = (create_device(i, 1) for i in range(1, 25))
+    for device in devices_gen:
+        print(device)
