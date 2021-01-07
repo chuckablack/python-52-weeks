@@ -14,9 +14,6 @@ if __name__ == '__main__':
 
     devices_gen = create_devices_gen(num_devices=254, num_subnets=254)
 
-    # print("calculating tabular output of devices ...")
-    # print("\n", tabulate(devices, headers="keys"))
-
     while True:
 
         ip_to_find = input("\nEnter IP address to find: ")
@@ -47,6 +44,8 @@ if __name__ == '__main__':
     # SIMPLE GENERATOR COMPREHENSION
     print("\n\n____ DEVICE INFO PARSING USING GENERATOR COMPREHENSION ____________________\n")
     device_str = "  r3-L-n7, cisco, catalyst 2960, ios , extra stupid stuff "
+    device = [item.strip() for item in device_str.split(",")]
+    print("device using list comprehension:\n\t\t", device)
     device = [item.strip() for item in (device_str.split(","))]
     print("device using generator comprehension:\n\t\t", device)
 

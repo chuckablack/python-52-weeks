@@ -1,9 +1,8 @@
-from util.create_utils import create_devices, create_devices_gen
-from random import choice
-import string
-from tabulate import tabulate
 import time
 
+from tabulate import tabulate
+
+from util.create_utils import create_devices
 
 # --- Main program --------------------------------------------
 if __name__ == '__main__':
