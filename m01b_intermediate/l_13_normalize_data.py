@@ -1,6 +1,9 @@
 from ipaddress import IPv4Address
 
-# REMOVE CAPITALIZATION ISSUES
+print("\nNormalization tests\n")
+
+# ----- STRING NORMALIZATION --------------------
+
 device_1 = {
     "name": "sbx-n9kv-ao",
     "vendor": "cisco",
@@ -25,11 +28,21 @@ if (
     and device_1["model"].lower() == device_2["model"].lower()
     and device_1["os"].lower() == device_2["os"].lower()
 ):
-    print("--\nString lower() normalization works")
+    print("--String lower() normalization works")
 else:
-    print("--\nString lower() normalization failed")
+    print("--String lower() normalization failed")
 
-# MAC ADDRESS NORMALIZATION
+if (
+    device_1["name"].casefold() == device_2["name"].casefold()
+    and device_1["vendor"].casefold() == device_2["vendor"].casefold()
+    and device_1["model"].casefold() == device_2["model"].casefold()
+    and device_1["os"].casefold() == device_2["os"].casefold()
+):
+    print("--String casefold() normalization works")
+else:
+    print("--String casefold() normalization failed")
+
+# ----- MAC ADDRESS NORMALIZATION --------------------
 
 mac_addr_colons = "a0:b1:c2:d3:e4:f5"
 mac_addr_caps = "A0:B1:C2:D3:E4:F5"
@@ -45,12 +58,6 @@ def normalize(mac):
     return mac.lower().replace(":", "").replace(".", "").replace("-", "")
 
 
-# print("MAC address with colons:  ", normalize(mac_addr_colons))
-# print("MAC address with caps:    ", normalize(mac_addr_caps))
-# print("MAC address with dots:    ", normalize(mac_addr_dots))
-# print("MAC address with hyphens: ", normalize(mac_addr_hyphens))
-# print("MAC address with wacky:   ", normalize(mac_addr_wacky))
-
 if (
     normalize(mac_addr_colons)
     == normalize(mac_addr_caps)
@@ -59,16 +66,20 @@ if (
     == normalize(mac_addr_wacky)
     == mac_addr_norm
 ):
-    print("--\nMAC address normalization works")
+    print("--MAC address normalization works")
 else:
-    print("--\nMAC address normalization failed")
+    print("--MAC address normalization failed")
 
-# IP ADDRESS NORMALIZATION
+# ----- IP ADDRESS NORMALIZATION --------------------
 
 ip_addr_1 = "10.0.1.1"
 ip_addr_2 = "10.000.001.001"
+ip_addr_3 = "010.00.01.001"
 
-if IPv4Address(ip_addr_1) == IPv4Address(ip_addr_2):
-    print("--\nIP address normalization works")
+if IPv4Address(ip_addr_1) == IPv4Address(ip_addr_2) == IPv4Address(ip_addr_3):
+    print("--IP address normalization works")
 else:
-    print("--\nIP address normalization failed")
+    print("--IP address normalization failed")
+
+# ----- DEVICE DATA NORMALIZATION --------------------
+# (see NAPALM examples)

@@ -50,4 +50,3 @@ with driver(hostname='ios-xe-mgmt.cisco.com',
 #
 #     print("\n----- environment ----------")
 #     print(json.dumps(device.get_environment(), sort_keys=True, indent=4))
-
