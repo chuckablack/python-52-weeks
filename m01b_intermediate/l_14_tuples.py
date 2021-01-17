@@ -7,24 +7,22 @@ if __name__ == '__main__':
 
     devices = tuple(create_devices(num_devices=4, num_subnets=1))
 
-    print("\n----- LIST OF DEVICES --------------------")
+    print("\n----- TUPLE OF DEVICES --------------------")
     pprint(devices)
 
-    # NAMED TUPLE
-    # device = {
-    #     "name": "sbx-n9kv-ao",
-    #     "vendor": "cisco",
-    #     "model": "Nexus9000 C9300v Chassis",
-    #     "os": "nxos",
-    #     "version": "9.3(3)",
-    #     "ip": "10.1.1.1",
-    #     1: "any data goes here",
-    # }
+    print("\n----- DEVICE AS TUPLE --------------------")
+    device = ("sbx-n9kv-ao", "cisco", "Nexus9000 C9300v Chassis", "nxos", "10.0.1.1")
 
-    Device = namedtuple('Device', ['name', 'vendor', 'model', 'os', 'ip'])
-    device = Device("sbx-n9kv-ao", "cisco", "Nexus9000 C9300v Chassis", "nxos", "10.1.1.1")
+    print("  name:", device[0])
+    print("vendor:", device[1])
+    print(" model:", device[2])
+    print("    os:", device[3])
+    print("    ip:", device[4])
 
     print("\n----- DEVICE AS NAMED TUPLE --------------------")
+    Device = namedtuple('Device', ['name', 'vendor', 'model', 'os', 'ip'])
+    device = Device("sbx-n9kv-ao", "cisco", "Nexus9000 C9300v Chassis", "nxos", "10.0.1.1")
+
     print("  name:", device.name)
     print("vendor:", device.vendor)
     print(" model:", device.model)
@@ -35,7 +33,7 @@ if __name__ == '__main__':
     pprint(device)
 
     print("\n----- CONVERT DEVICES TO NAMED TUPLES --------------------")
-    devices = create_devices(num_devices=10, num_subnets=2)
+    devices = create_devices(num_devices=10, num_subnets=2, random_ip=True)
     devices_as_namedtuples = list()
     for device in devices:
         Device = namedtuple("Device", device.keys())

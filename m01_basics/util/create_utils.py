@@ -1,8 +1,41 @@
-from random import choice
+from random import choice, randint
 import string
 
+allocated_ip_addresses = set()
 
-def create_device(device_index, subnet_index):
+
+def get_random_ip(subnet_index):
+
+    # First try generating random device index
+    # We'll try 4 times 254 since random may generate repeat values
+    for _ in range(1, 254*4):
+
+        device_index = randint(1, 254)
+        ip = "10.0." + str(subnet_index) + "." + str(device_index)
+
+        if ip in allocated_ip_addresses:
+            continue
+
+        allocated_ip_addresses.add(ip)
+        return ip
+
+    # If our random effort fails, just iterate through all device indexes
+    # to see if we can find an available IP
+    for device_index in range(1, 254):
+
+        ip = "10.0." + str(subnet_index) + "." + str(device_index)
+
+        if ip in allocated_ip_addresses:
+            continue
+
+        allocated_ip_addresses.add(ip)
+        return ip
+
+    # If we got here, we don't have any available IP addresses
+    return None
+
+
+def create_device(device_index, subnet_index, random_ip=False):
 
     device = dict()
 
@@ -32,12 +65,15 @@ def create_device(device_index, subnet_index):
         device["os"] = "eos"
         device["version"] = choice(["4.24.1F", "4.23.2F", "4.22.1F", "4.21.3F"])
 
-    device["ip"] = "10.0." + str(subnet_index) + "." + str(device_index)
+    if random_ip:
+        device["ip"] = get_random_ip(subnet_index)
+    else:
+        device["ip"] = "10.0." + str(subnet_index) + "." + str(device_index)
 
     return device
 
 
-def create_devices(num_devices=1, num_subnets=1):
+def create_devices(num_devices=1, num_subnets=1, random_ip=False):
 
     # CREATE LIST OF DEVICES
     created_devices = list()
@@ -51,7 +87,7 @@ def create_devices(num_devices=1, num_subnets=1):
 
         for device_index in range(1, num_devices+1):
 
-            device = create_device(device_index, subnet_index)
+            device = create_device(device_index, subnet_index, random_ip)
             created_devices.append(device)
 
     print("completed device creation")

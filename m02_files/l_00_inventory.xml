@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<inventory>
+	<devices>
+		<name>devnet-csr-always-on-sandbox</name>
+		<ssh-info>
+			<hostname>ios-xe-mgmt-latest.cisco.com</hostname>
+			<port>8181</port>
+			<credentials>
+				<username>developer</username>
+				<password>C1sco12345</password>
+			</credentials>
+			<device_type>cisco_ios</device_type>
+		</ssh-info>
+		<netconf-info>
+			<port>10000</port>
+		</netconf-info>
+		<restconf-info>
+			<port>9443</port>
+		</restconf-info>
+	</devices>
+	<devices>
+		<name>devnet-csr-always-on-sandbox</name>
+		<ssh-info>
+			<hostname>sbx-nxos-mgmt.cisco.com</hostname>
+			<port>8181</port>
+			<credentials>
+				<username>admin</username>
+				<password>Admin_1234!</password>
+			</credentials>
+			<device_type>cisco_nxos</device_type>
+		</ssh-info>
+	</devices>
+</inventory>
