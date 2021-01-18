@@ -10,12 +10,11 @@ with open("l_00_inventory.xml", "w") as xml_out:
 with open("l_00_inventory.xml", "r") as xml_in:
     saved_inventory = xmltodict.parse(xml_in.read())
 
-print("\nxml pretty version:")
+print("\n----- xml pretty version --------------------")
 print(xmltodict.unparse(saved_inventory, pretty=True))
 
 # COMPARE ORIGINAL WITH CONVERTED AND SAVED DATA
 print("\n----- compare saved inventory with original --------------------")
-saved_inventory = json.loads(json.dumps(saved_inventory))
 if saved_inventory == xml_inventory:
     print("-- worked: saved inventory equals original")
 else:
