@@ -44,9 +44,8 @@ if __name__ == '__main__':
     # SIMPLE GENERATOR COMPREHENSION
     print("\n\n____ DEVICE INFO PARSING USING GENERATOR COMPREHENSION ____________________\n")
     device_str = "  r3-L-n7, cisco, catalyst 2960, ios , extra stupid stuff "
-    device = [item.strip() for item in device_str.split(",")]
-    print("device using list comprehension:\n\t\t", device)
-    device = [item.strip() for item in (device_str.split(","))]
+    device_gen = (item for item in device_str.split(","))
+    device = [item.strip() for item in device_gen]
     print("device using generator comprehension:\n\t\t", device)
 
     # MORE INTERESTING GENERATOR COMPREHENSION
