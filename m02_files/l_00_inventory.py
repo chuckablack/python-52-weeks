@@ -31,7 +31,7 @@ csv_inventory = [
         "C1sco12345",
     ],
     [
-        "devnet-csr-always-on-sandbox",
+        "devnet-nxos-always-on-sandbox",
         "sbx-nxos-mgmt.cisco.com",
         "8181",
         "admin",

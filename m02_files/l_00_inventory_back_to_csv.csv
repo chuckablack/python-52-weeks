@@ -1,0 +1,10 @@
+name,hostname,ssh-port,ssh-username,ssh-password
+frodo-baggins,frodo.tallac.com,8181,frodo,Admin_1234!
+sam-gamgee,sam.tallac.com,8181,sam,Admin_1234!
+pippin-took,pippin.tallac.com,8181,pippin,Admin_1234!
+merry-brandybuck,merry.tallac.com,8181,merry,Admin_1234!
+gandalf,gandalf.tallac.com,8181,gandalf,Admin_1234!
+aragorn,aragorn.tallac.com,8181,aragorn,Admin_1234!
+legolas,legolas.tallac.com,8181,legolas,Admin_1234!
+gimli,gimli.tallac.com,8181,gimli,Admin_1234!
+boromir,boromir.tallac.com,8181,boromir,Admin_1234!
