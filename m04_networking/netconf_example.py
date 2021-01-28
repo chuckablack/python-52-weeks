@@ -1,5 +1,8 @@
 from ncclient import manager
 from lxml import etree
+import xmltodict
+from pprint import pprint
+
 
 # the following comment/lines are to workaround a PyCharm bug
 # noinspection PyUnresolvedReferences
@@ -27,8 +30,8 @@ nxos_device = {
     "device_params": {"name": "nexus"},
 }
 
-for device in [csr_device_1, csr_device_2]:
 # for device in [nxos_device]:
+for device in [csr_device_1]:
 
     print(f"\n----- Retrieving XML configuration from: {device['host']} --------------------")
     nc_connection = manager.connect(
@@ -56,11 +59,12 @@ for device in [csr_device_1, csr_device_2]:
                         </System>
                        '''
         rsp = nc_connection.get(('subtree', vlans_filter))
+        print(f"\n----- XML get() vlans subtree from: {device['host']}")
+        print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
 
         rsp = nc_connection.get(('subtree', version_xml_nxos))
         print(f"\n----- XML get() version subtree from: {device['host']}")
         print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
-
 
     config = nc_connection.get_config("running")
     print(f"\n----- XML get_config() output from: {device['host']}")
@@ -118,3 +122,31 @@ for device in [csr_device_1, csr_device_2]:
     config = nc_connection.get_config("running")
     print(f"\n----- XML get() output from: {device['host']}")
     print(str(etree.tostring(config.data_ele, pretty_print=True).decode()))
+
+    # Cisco-IOS-XE-process-cpu-oper.yang
+    netconf_filter = '''
+                      <filter>
+                        <cpu-usage xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-process-cpu-oper">
+                        </cpu-usage>
+                      </filter>
+                    '''
+
+    rsp = nc_connection.get(netconf_filter)
+    print(f"\n----- XML get() cpu subtree from: {device['host']}")
+    print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
+
+    # Cisco-IOS-XE-memory-oper.yang
+    netconf_filter = '''
+                      <filter>
+                        <memory-statistics xmlns="http://cisco.com/ns/yang/Cisco-IOS-XE-memory-oper">
+                        </memory-statistics>
+                      </filter>
+                    '''
+
+    rsp = nc_connection.get(netconf_filter)
+    print(f"\n----- XML get() memory subtree from: {device['host']}")
+    print(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()))
+
+    memory_statistics = xmltodict.parse(str(etree.tostring(rsp.data_ele, pretty_print=True).decode()), dict_constructor=dict)
+    print("\n----- Memory statistics --------------------\n")
+    pprint(memory_statistics)

@@ -22,6 +22,7 @@ inventory = [
 ]
 
 csv_inventory = [
+    ["name", "hostname", "ssh-port", "ssh-username", "ssh-password"],
     [
         "devnet-csr-always-on-sandbox",
         "ios-xe-mgmt-latest.cisco.com",
@@ -40,7 +41,7 @@ csv_inventory = [
 
 xml_inventory = {
     "inventory": {
-        "devices": [
+        "device": [
             {
                 "name": "devnet-csr-always-on-sandbox",
                 "ssh-info": {

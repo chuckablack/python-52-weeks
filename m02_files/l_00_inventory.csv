@@ -1,2 +1,3 @@
+name,hostname,ssh-port,ssh-username,ssh-password
 devnet-csr-always-on-sandbox,ios-xe-mgmt-latest.cisco.com,8181,developer,C1sco12345
 devnet-csr-always-on-sandbox,sbx-nxos-mgmt.cisco.com,8181,admin,Admin_1234!
