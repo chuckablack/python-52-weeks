@@ -1,4 +1,4 @@
-from l_00_inventory import inventory
+from l_00_inventory import inve- worked: saved inventory equals originntory
 import yaml
 
 with open("m02_files/l_00_inventory.yaml", "w") as yaml_out:
