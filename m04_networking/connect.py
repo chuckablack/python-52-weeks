@@ -34,3 +34,7 @@ def connect(device_type):
     )
 
     return connection
+
+
+def disconnect(connection):
+    connection.disconnect()
