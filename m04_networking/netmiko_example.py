@@ -1,4 +1,4 @@
-from connect import connect
+from connect import netmiko_connect
 import re
 
 SHOW_IP_ROUTE = "ip route"
@@ -23,10 +23,13 @@ commands = {SHOW_IP_ROUTE: {CSR: "show ip route",
 
 # CYCLE THROUGH DIFFERENT DEVICE TYPES
 for device_type in [CSR, NXOS]:
-    connection = connect(device_type)
-    # print('connection:', connection)
-    # output = connection.send_command("show running-config")
-    # print(output)
+
+    connection = netmiko_connect(device_type)
+    print('connection:', connection)
+
+    print(f"\n\n----- showing running configuration for {device_type} -------------------")
+    output = connection.send_command("show running-config")
+    print(output)
 
     print(f"\n\n----- showing ip route for {device_type} -------------------")
     output = connection.send_command(commands[SHOW_IP_ROUTE][device_type])
@@ -48,8 +51,8 @@ for device_type in [CSR, NXOS]:
 
 # CYCLE THROUGH DIFFERENT SHOW COMMANDS
 print("\n\nBEGIN CYCLE THROUGH DIFFERENT SHOW COMMANDS")
-csr_connection = connect(CSR)
-nxos_connection = connect(NXOS)
+csr_connection = netmiko_connect(CSR)
+nxos_connection = netmiko_connect(NXOS)
 
 if csr_connection and nxos_connection:
     print("--- connections successful")
@@ -79,8 +82,9 @@ for command_type, command in commands.items():
 csr_connection.disconnect()
 nxos_connection.disconnect()
 
-# Now the tricky part - parsing the output into some 'normalized' format
+# Now the harder part - parsing the output into some 'normalized' format
 if nxos_version_raw and csr_version_raw:
+
     re_nxos_version_pattern = r"NXOS: version (.*)"
     re_csr_version_pattern = r"Cisco IOS XE Software, Version (.*)"
 

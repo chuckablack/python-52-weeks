@@ -1,7 +1,7 @@
 from netmiko import Netmiko
 
 
-def connect(device_type):
+def netmiko_connect(device_type):
 
     cisco_sandbox_device = {
         "csr": {
