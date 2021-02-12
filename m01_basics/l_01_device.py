@@ -9,7 +9,7 @@ device = {
     "os": "nxos",
     "version": "9.3(3)",
     "ip": "10.1.1.1",
-    1: "any data goes here",
+    "1": "any data goes here",
 }
 
 # SIMPLE PRINT
