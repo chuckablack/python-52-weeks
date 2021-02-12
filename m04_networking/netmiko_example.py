@@ -7,22 +7,22 @@ SHOW_INT_DESCRIPTION = "int description"
 SHOW_INT_BRIEF = "int brief"
 SHOW_VERSION = "version"
 
-CSR = "csr"
+IOS = "ios"
 NXOS = "nxos"
-commands = {SHOW_IP_ROUTE: {CSR: "show ip route",
+commands = {SHOW_IP_ROUTE: {IOS: "show ip route",
                             NXOS: "show ip route"},
-            SHOW_ARP: {CSR: "show arp",
+            SHOW_ARP: {IOS: "show arp",
                        NXOS: "show ip arp"},
-            SHOW_INT_DESCRIPTION: {CSR: "show interfaces description",
+            SHOW_INT_DESCRIPTION: {IOS: "show interfaces description",
                                    NXOS: "show interface description"},
-            SHOW_INT_BRIEF: {CSR: "show ip interface brief",
+            SHOW_INT_BRIEF: {IOS: "show ip interface brief",
                              NXOS: "show interface brief"},
-            SHOW_VERSION: {CSR: "show version",
+            SHOW_VERSION: {IOS: "show version",
                            NXOS: "show version"}
             }
 
 # CYCLE THROUGH DIFFERENT DEVICE TYPES
-for device_type in [CSR, NXOS]:
+for device_type in [IOS, NXOS]:
 
     connection = netmiko_connect(device_type)
     print('connection:', connection)
@@ -51,7 +51,7 @@ for device_type in [CSR, NXOS]:
 
 # CYCLE THROUGH DIFFERENT SHOW COMMANDS
 print("\n\nBEGIN CYCLE THROUGH DIFFERENT SHOW COMMANDS")
-csr_connection = netmiko_connect(CSR)
+csr_connection = netmiko_connect(IOS)
 nxos_connection = netmiko_connect(NXOS)
 
 if csr_connection and nxos_connection:
@@ -66,8 +66,8 @@ for command_type, command in commands.items():
 
     print(f"\n----- command: {command_type} ---------------------")
 
-    print(f"\n----- ... for CSR: {command[CSR]} ---------------------")
-    csr_output = csr_connection.send_command(command[CSR])
+    print(f"\n----- ... for IOS: {command[IOS]} ---------------------")
+    csr_output = csr_connection.send_command(command[IOS])
     print(csr_output)
 
     print(f"\n----- ... for NXOS: {command[NXOS]} ---------------------")
@@ -95,7 +95,7 @@ if nxos_version_raw and csr_version_raw:
         print(f"---> NXOS version parsed from output: {nxos_version_match.group(1)}")
 
     if csr_version_match:
-        print(f"---> CSR version parsed from output:  {csr_version_match.group(1)}")
+        print(f"---> IOS version parsed from output:  {csr_version_match.group(1)}")
 
 else:
     print(f"!!! error, nxos or csr version missing")
