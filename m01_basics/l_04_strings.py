@@ -15,7 +15,7 @@ print("    ", device1)
 
 # REMOVE BLANKS
 device1 = device1_str.replace(" ", "").split(",")
-print("device1 replaced blanks using split:\n    ", device1)
+print("device1 removed blanks using replace:\n    ", device1)
 
 # REMOVE BLANKS, CHANGE COMMA TO COLON
 device1_str_colon = device1_str.replace(" ", "").replace(",", ":")

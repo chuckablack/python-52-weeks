@@ -14,8 +14,8 @@ if __name__ == '__main__':
     for device in devices:
         devices_dict[device["ip"]] = device
 
-    print("calculating tabular output of devices ...")
-    print("\n", tabulate(devices, headers="keys"))
+    # print("calculating tabular output of devices ...")
+    # print("\n", tabulate(devices, headers="keys"))
 
     while True:
 
