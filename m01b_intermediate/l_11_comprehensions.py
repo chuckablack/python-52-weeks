@@ -37,14 +37,14 @@ device_info_str = "name:r3-L-n7, vendor:cisco, model:catalyst 2960, os:ios, vers
 
 # LIST THEN DICT COMPREHENSION FROM STRING
 device_info_pairs = [kv_pair.split(":") for kv_pair in device_info_str.split(",")]
-device = {item[0]: item[1] for item in device_info_pairs}
+device = {item[0].strip(): item[1].strip() for item in device_info_pairs}
 print("\ndevice using list and dict comprehension:\n\t\t", device)
 print("device nicely formatted:")
 for key, value in device.items():
     print(f"{key:>16s} : {value}")
 
 # DICT COMPREHENSION FROM STRING
-device = {item.split(":")[0]: item.split(":")[1] for item in device_info_str.split(",")}
+device = {item.split(":")[0].strip(): item.split(":")[1].strip() for item in device_info_str.split(",")}
 print("\ndevice using dict comprehension:\n\t\t", device)
 print("device nicely formatted:")
 for key, value in device.items():
