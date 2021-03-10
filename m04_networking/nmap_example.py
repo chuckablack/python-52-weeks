@@ -1,7 +1,7 @@
-import nmap
+from nmap import PortScanner, PortScannerAsync
 from pprint import pprint
 
-nm = nmap.PortScanner()
+nm = PortScanner()
 
 while True:
 
@@ -56,7 +56,7 @@ def discovered_host(found_host, scan_result):
         print(f"--- --- found host: {found_host} scan: {scan_result['nmap']['scanstats']}")
 
 
-nma = nmap.PortScannerAsync()
+nma = PortScannerAsync()
 print("\nScanning all hosts in subnet using ICMP with callback")
 nma.scan("192.168.254.0/24", arguments="-PE", callback=discovered_host)
 print("--- iterating hosts responding to ICMP echo")
