@@ -10,9 +10,6 @@ urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 
 class NapalmDevice(Device):
 
-    def __init__(self, name, device_type, hostname):
-        super().__init__(name, device_type, hostname)
-
     def connect(self):
         driver = napalm.get_network_driver(self.device_type)
         if self.device_type == DeviceType.NXOS:

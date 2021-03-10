@@ -6,9 +6,6 @@ from util import get_version_from_show, get_uptime_from_show
 
 class NetmikoDevice(Device):
 
-    def __init__(self, name, device_type, hostname):
-        super().__init__(name, device_type, hostname)
-
     def connect(self):
         print(f"\n\n----- Connecting to {self.hostname}:{self.port}")
         self.connection = Netmiko(

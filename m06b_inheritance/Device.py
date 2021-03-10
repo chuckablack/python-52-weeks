@@ -1,9 +1,9 @@
 class Device:
-    def __init__(self, name, device_type, hostname, transport=None):
+
+    def __init__(self, name, device_type, hostname):
         self.name = name
         self.hostname = hostname
         self.device_type = device_type
-        self.transport = transport
 
         self.mac = None
         self.ip = None

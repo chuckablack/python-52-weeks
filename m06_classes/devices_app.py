@@ -1,4 +1,4 @@
-from device import Device
+from Device import Device
 from misc_types import DeviceType, TransportType
 from pprint import pprint
 

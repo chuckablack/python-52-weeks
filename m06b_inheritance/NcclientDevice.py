@@ -5,9 +5,6 @@ import xmltodict
 
 class NcclientDevice(Device):
 
-    def __init__(self, name, device_type, hostname):
-        super().__init__(name, device_type, hostname)
-
     def connect(self):
         print(f"\n\n----- Connecting to {self.hostname}:{self.port}")
         self.connection = manager.connect(
