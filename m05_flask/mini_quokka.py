@@ -85,7 +85,8 @@ def hosts():
         if not hostname:
             return "must provide hostname on PUT", 400
 
-        global_hosts["hostname"] = json.loads(request.get_json())
+        host = request.get_json()
+        global_hosts[hostname] = host
         return {}, 204
 
     elif request.method == "DELETE":
@@ -93,7 +94,7 @@ def hosts():
         if not hostname:
             return "must provide hostname on DELETE", 400
 
-        del global_hosts["hostname"]
+        del global_hosts[hostname]
         return {}, 204
 
 
