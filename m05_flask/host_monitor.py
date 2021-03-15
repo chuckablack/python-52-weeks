@@ -7,7 +7,6 @@ import scapy.all as scapy
 
 MONITOR_INTERVAL = 15
 DISCOVERY_INTERVAL = 300
-PORTSCAN_INTERVAL = 3600
 
 
 def get_hosts():
@@ -69,7 +68,7 @@ def ping_host(host):
 
     try:
         print(f"----> Pinging host: {host['hostname']}", end="")
-        ping_output = subprocess.check_output(
+        subprocess.check_output(
             ["ping", "-c3", "-n", "-i0.5", "-W2", host["ip"]]
         )
         host["availability"] = True
@@ -92,7 +91,7 @@ def main():
             last_discovery = datetime.now()
 
         hosts = get_hosts()
-        for _, host in hosts.items():
+        for host in hosts.values():
             ping_host(host)
             update_host(host)
 

@@ -91,7 +91,7 @@ def ping_host(host):
 
 def portscan_hosts(hosts):
 
-    for _, host in hosts.items():
+    for host in hosts.values():
 
         if "availability" not in host or not host["availability"]:
             continue
@@ -130,7 +130,7 @@ def main():
             portscan_hosts(hosts)
             last_portscan = datetime.now()
 
-        for _, host in hosts.items():
+        for host in hosts.values():
             ping_host(host)
             update_host(host)
 

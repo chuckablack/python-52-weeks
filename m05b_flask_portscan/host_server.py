@@ -26,7 +26,6 @@ def hosts():
         return global_hosts
 
     elif request.method == "POST":
-        global_hosts = dict()
         global_hosts = request.get_json()
         return {}, 204
 

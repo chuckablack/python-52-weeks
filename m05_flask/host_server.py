@@ -15,13 +15,12 @@ global_hosts = dict()  # not thread-safe (flask)
 
 @app.route("/hosts", methods=["GET", "POST", "PUT", "DELETE"])
 def hosts():
-    global global_hosts  # Remember, don't do this (use globals in Flask)
+    global global_hosts  # Remember, don't do this (don't use globals in Flask)
 
     if request.method == "GET":
         return global_hosts
 
     elif request.method == "POST":
-        global_hosts = dict()
         global_hosts = request.get_json()
         return {}, 204
 
@@ -41,7 +40,3 @@ def hosts():
 
         del global_hosts[hostname]
         return {}, 204
-
-
-if __name__ == "__main__":
-    app.run()

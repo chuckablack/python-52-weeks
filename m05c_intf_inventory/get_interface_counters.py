@@ -7,14 +7,6 @@ from time import sleep
 from signal import signal, SIGINT
 
 
-# response = requests.get("http://127.0.0.1:5000/inventory")
-# if response.status_code != 200:
-#     print(f"get inventory failed: {response.reason}")
-#     exit()
-#
-# print(json.dumps(response.json(), indent=4))
-
-
 def exit_gracefully(signal_received, frame):
     print("\n\nexiting gracefully")
     exit(0)
