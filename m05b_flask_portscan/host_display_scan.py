@@ -21,7 +21,7 @@ def print_hosts(hosts, previous_hosts):
 
     subprocess.call("clear" if os.name == "posix" else "cls")
     print(
-        "\n  __Hostname______________     ___IP_address___   ___MAC_address___   __Avail__   __Last_Heard___________\n"
+        "\n  __Hostname______________     ___IP_address___   __Avail__   __Last_Heard__________   __Open_TCP_Ports___\n"
     )
     for host in hosts.values():
 
@@ -36,9 +36,9 @@ def print_hosts(hosts, previous_hosts):
             color +
             f"  {host['hostname'][:26]:<26}"
             + f"   {host['ip']:<16}"
-            + f"   {host['mac']:>17}"
             + f"   {str(host['availability']):>7}  "
             + f"   {host['last_heard']:>16}"
+            + f"   {host['open_tcp_ports']}"
             + Fore.WHITE
         )
 

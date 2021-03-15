@@ -18,7 +18,6 @@ app = Flask(__name__)
 global_devices = dict()  # not thread-safe (flask)
 global_hosts = dict()  # not thread-safe (flask)
 global_services = dict()  # not thread-safe (flask)
-# DON'T DO THIS # DON'T DO THIS # DON'T DO THIS !!!
 
 
 @app.route("/inventory", methods=["GET"])
