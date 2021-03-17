@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/m04_networking" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/m06_classes" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/m06b_inheritance" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/m05d_host_device_service" isTestSource="false" />
     </content>
     <orderEntry type="jdk" jdkName="Python 3.8 (quokka)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
