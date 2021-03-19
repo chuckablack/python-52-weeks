@@ -82,9 +82,9 @@ def set_device(device):
         if "ip_address" in device:
             device_obj.target = device["ip_address"]
         if "model" in device:
-            device_obj.data = device["model"]
-        if "os" in device:
-            device_obj.data = device["os"]
+            device_obj.model = device["model"]
+        if "os_version" in device:
+            device_obj.os_version = device["os_version"]
         if "availability" in device:
             device_obj.availability = device["availability"]
         if "response_time" in device:

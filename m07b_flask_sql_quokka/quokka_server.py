@@ -14,9 +14,10 @@ def register_extensions(app):
     db.init_app(app)
 
 
-app = create_app()
-app.app_context().push()
+quokka_app = create_app()
+quokka_app.app_context().push()
 
+# noinspection PyUnresolvedReferences
 import db_classes
 db.create_all()
 from db_apis import get_all_hosts, set_host
@@ -24,15 +25,11 @@ from db_apis import get_all_devices, set_device
 from db_apis import get_all_services, set_service
 
 
-@app.route("/hosts", methods=["GET", "POST", "PUT", "DELETE"])
+@quokka_app.route("/hosts", methods=["GET", "PUT"])
 def hosts():
 
     if request.method == "GET":
         return get_all_hosts()
-
-    elif request.method == "POST":
-        # global_hosts = request.get_json()
-        return {}, 204
 
     elif request.method == "PUT":
         hostname = request.args.get("hostname")
@@ -43,24 +40,12 @@ def hosts():
         set_host(host)
         return {}, 204
 
-    elif request.method == "DELETE":
-        # hostname = request.args.get("hostname")
-        # if not hostname:
-        #     return "must provide hostname on DELETE", 400
-        #
-        # del global_hosts[hostname]
-        return {}, 204
 
-
-@app.route("/devices", methods=["GET", "POST", "PUT", "DELETE"])
+@quokka_app.route("/devices", methods=["GET", "PUT"])
 def devices():
 
     if request.method == "GET":
         return get_all_devices()
-
-    elif request.method == "POST":
-        # global_devices = request.get_json()
-        return {}, 204
 
     elif request.method == "PUT":
         name = request.args.get("name")
@@ -71,24 +56,12 @@ def devices():
         set_device(device)
         return {}, 204
 
-    elif request.method == "DELETE":
-        # name = request.args.get("name")
-        # if not name:
-        #     return "must provide name on DELETE", 400
-        #
-        # del global_devices[name]
-        return {}, 204
 
-
-@app.route("/services", methods=["GET", "POST", "PUT", "DELETE"])
+@quokka_app.route("/services", methods=["GET", "PUT"])
 def services():
 
     if request.method == "GET":
         return get_all_services()
-
-    elif request.method == "POST":
-        # global_services = request.get_json()
-        return {}, 204
 
     elif request.method == "PUT":
         name = request.args.get("name")
@@ -97,12 +70,4 @@ def services():
 
         service = request.get_json()
         set_service(service)
-        return {}, 204
-
-    elif request.method == "DELETE":
-        # name = request.args.get("name")
-        # if not name:
-        #     return "must provide name on DELETE", 400
-        #
-        # del global_services[name]
         return {}, 204
