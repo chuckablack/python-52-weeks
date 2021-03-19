@@ -8,7 +8,7 @@ import requests
 
 def get_services():
 
-    response = requests.get("http://127.0.0.1:5000/services")
+    response = requests.get("http://127.0.0.1:5001/services")
     if response.status_code != 200:
         print(f"get services failed: {response.reason}")
         return {}

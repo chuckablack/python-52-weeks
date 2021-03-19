@@ -10,7 +10,7 @@ import re
 
 def get_devices():
 
-    response = requests.get("http://127.0.0.1:5000/devices")
+    response = requests.get("http://127.0.0.1:5001/devices")
     if response.status_code != 200:
         print(f"get devices failed: {response.reason}")
         return {}

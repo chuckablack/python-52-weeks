@@ -9,7 +9,7 @@ import requests
 
 def get_hosts():
 
-    response = requests.get("http://127.0.0.1:5000/hosts")
+    response = requests.get("http://127.0.0.1:5001/hosts")
     if response.status_code != 200:
         print(f"get hosts failed: {response.reason}")
         return {}

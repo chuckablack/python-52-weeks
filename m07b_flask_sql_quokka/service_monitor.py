@@ -11,7 +11,7 @@ DISCOVERY_INTERVAL = 300
 def get_services():
 
     print("\n\n----> Retrieving services ...", end="")
-    response = requests.get("http://127.0.0.1:5000/services")
+    response = requests.get("http://127.0.0.1:5001/services")
     if response.status_code != 200:
         print(f" !!!  Failed to retrieve services from server: {response.reason}")
         return {}
@@ -49,7 +49,7 @@ def discovery():
 def update_service(service):
 
     print(f"----> Updating service status via REST API: {service['name']}", end="")
-    rsp = requests.put("http://127.0.0.1:5000/services", params={"name": service["name"]}, json=service)
+    rsp = requests.put("http://127.0.0.1:5001/services", params={"name": service["name"]}, json=service)
     if rsp.status_code != 204:
         print(
             f"{str(datetime.now())[:-3]}: Error posting to /services, response: {rsp.status_code}, {rsp.content}"
