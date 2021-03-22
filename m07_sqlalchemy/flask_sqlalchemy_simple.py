@@ -1,7 +1,6 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from pprint import pprint
-from sqlalchemy import asc
 import yaml
 
 app = Flask(__name__)
@@ -11,23 +10,14 @@ db = SQLAlchemy(app)
 
 
 class Device(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, unique=True, nullable=False)
+    name = db.Column(db.Text, primary_key=True, nullable=False)
     hostname = db.Column(db.Text)
     ip_address = db.Column(db.Text, unique=True)
     vendor = db.Column(db.Text)
     os = db.Column(db.Text)
-    username = db.Column(db.Text)
-    password = db.Column(db.Text)
-    transport = db.Column(db.Text)
-    ssh_port = db.Column(db.Integer)
-    availability = db.Column(db.Text)
-    response_time = db.Column(db.Text)
-    sla_availability = db.Column(db.Text)
-    sla_response_time = db.Column(db.Text)
 
     def __repr__(self):
-        return '<Device %r>' % self.name
+        return f"Device: {self.name}"
 
 
 db.create_all()
@@ -56,12 +46,13 @@ csr = Device.query.filter_by(name="no name will match this").first()
 print("\n----- csr device not found ----------")
 print(f"--- device found should be None: {csr}")
 
-all_devices = Device.query.order_by(Device.username).all()
-print("\n----- all devices, ordered by username ----------")
+all_devices = Device.query.order_by(Device.ip_address).all()
+print("\n----- all devices, ordered by ip address ----------")
 for device in all_devices:
+    print(f"\nInformation for device: {device}\n")
     pprint(vars(device))
 
-db.session.delete(Device.query.filter_by(username="developer").first())
+db.session.delete(Device.query.filter_by(ip_address="10.1.254.68").first())
 db.session.delete(Device.query.filter_by(os="nxos-ssh").first())
 db.session.commit()
 

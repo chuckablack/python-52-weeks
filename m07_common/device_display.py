@@ -3,11 +3,10 @@ import subprocess
 import sys
 from time import sleep
 from colorama import Fore
+import yaml
 
 import requests
-
-
-DISPLAY_WAIT_TIME = 10
+from quokka_constants import DISPLAY_WAIT_TIME
 
 
 def get_devices():
@@ -18,6 +17,16 @@ def get_devices():
         return {}
 
     return response.json()
+
+
+def get_compliance_color(device):
+
+    if device["vendor"] not in compliance_table or device["model"] not in compliance_table[device["vendor"]]:
+        return Fore.LIGHTBLACK_EX
+    elif device["os_version"] != compliance_table[device["vendor"]][device["model"]]:
+        return Fore.LIGHTRED_EX
+    else:
+        return ""
 
 
 def print_devices(devices, previous_devices):
@@ -36,12 +45,15 @@ def print_devices(devices, previous_devices):
         else:
             color = Fore.LIGHTGREEN_EX
 
+        compliance_color = get_compliance_color(device)
+        version = compliance_color + device["os_version"] + color
+
         print(
-            color +
-            f"  {device['hostname'][:26]:<24}"
+            color
+            + f"  {device['hostname'][:26]:<24}"
             + f"  {device['ip_address']:>16}"
             + f"   {device['model'][:16]:<16}"
-            + f"   {device['os_version']:>7}"
+            + f"   {version:>7}"
             + f"   {str(device['availability']):>5}"
             + f"   {device['response_time']:>5.2f}"
             + f"  {device['last_heard']:>16}"
@@ -68,6 +80,10 @@ def main():
 
 
 if __name__ == "__main__":
+
+    with open("compliance.yaml", "r") as compliance_yaml:
+        compliance_table = yaml.safe_load(compliance_yaml.read())
+
     try:
         main()
     except KeyboardInterrupt:

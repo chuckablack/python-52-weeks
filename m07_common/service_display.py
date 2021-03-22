@@ -4,9 +4,7 @@ import sys
 from time import sleep
 from colorama import Fore
 import requests
-
-
-DISPLAY_WAIT_TIME = 10
+from quokka_constants import DISPLAY_WAIT_TIME
 
 
 def get_services():
