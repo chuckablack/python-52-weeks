@@ -26,7 +26,7 @@ def discovery():
     print(
         "\n\n----- Discovery services from inventory ---------------------"
     )
-    with open("../m07_common/services.yaml", "r") as yaml_in:
+    with open("services.yaml", "r") as yaml_in:
         yaml_services = yaml_in.read()
         services = yaml.safe_load(yaml_services)
 

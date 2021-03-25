@@ -44,7 +44,7 @@ def discovery():
     print(
         "\n\n----- Discovery devices from inventory ---------------------"
     )
-    with open("../m07_common/devices.yaml", "r") as yaml_in:
+    with open("devices.yaml", "r") as yaml_in:
         yaml_devices = yaml_in.read()
         devices = yaml.safe_load(yaml_devices)
 
