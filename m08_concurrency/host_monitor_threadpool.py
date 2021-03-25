@@ -1,14 +1,17 @@
-import subprocess
-from datetime import datetime, timedelta
-from time import sleep, time
+import argparse
 import socket
+import subprocess
+from concurrent.futures import ThreadPoolExecutor
+from datetime import datetime
+from time import time
+
 import requests
 import scapy.all as scapy
-import threading
-from concurrent.futures import ThreadPoolExecutor
 
-MONITOR_INTERVAL = 60
-DISCOVERY_INTERVAL = 300
+parser = argparse.ArgumentParser(description="Threadpool example")
+parser.add_argument('-poolsize',  default=10, help='Size of the threadpool')
+args = parser.parse_args()
+threadpool_size = int(args.poolsize)
 
 
 def get_hosts():
@@ -90,8 +93,8 @@ def main():
 
     time_start = time()
 
-    with ThreadPoolExecutor(max_workers=40) as executor:
-        results = executor.map(ping_host, hosts.values())
+    with ThreadPoolExecutor(max_workers=threadpool_size) as executor:
+        executor.map(ping_host, hosts.values())
 
     ping_with_threads_time = time() - time_start
     print(f"---> Completed pinging {len(hosts)} hosts using threadpool, time:", ping_with_threads_time)

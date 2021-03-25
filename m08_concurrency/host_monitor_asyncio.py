@@ -1,7 +1,7 @@
 import argparse
+import asyncio
 import socket
 import subprocess
-import threading
 from datetime import datetime
 from time import time
 
@@ -69,6 +69,25 @@ def update_host(host):
         print(f" Successfully updated host status via REST API: {host['hostname']}")
 
 
+async def ping_host_async(host):
+
+    try:
+        print(f"ping_host: creating ping_cmd for {host['hostname']}")
+        ping_cmd = ["ping", "-c3", "-n", "-i0.5", "-W2", host["ip_address"]]
+        print(f"ping_host: await create_subprocess_exec for {host['hostname']}")
+        process = await asyncio.create_subprocess_exec(*ping_cmd, stdout=asyncio.subprocess.PIPE)
+        print(f"ping_host: await communicate() for {host['hostname']}")
+        await process.communicate()
+
+        host["availability"] = True
+        host["last_heard"] = str(datetime.now())[:-3]
+        print(f"----> Host ping successful: {host['hostname']}")
+
+    except subprocess.CalledProcessError:
+        host["availability"] = False
+        print(f" !!!  Host ping failed: {host['hostname']}")
+
+
 def ping_host(host):
 
     try:
@@ -84,7 +103,7 @@ def ping_host(host):
         print(f" !!!  Host ping failed: {host['hostname']}")
 
 
-def main():
+async def main():
 
     discovery()
 
@@ -93,14 +112,10 @@ def main():
 
     time_start = time()
 
-    ping_host_threads = list()
-    for host in hosts.values():
-        ping_thread = threading.Thread(target=ping_host, args=(host,))
-        ping_host_threads.append(ping_thread)
-        ping_thread.start()
-
-    for thread in ping_host_threads:
-        thread.join()
+    print(f"main: gather for {hosts.keys()}")
+    ping_hosts = [ping_host_async(host) for host in hosts.values()]
+    await asyncio.gather(*ping_hosts)
+    print(f"main: gather complete")
 
     ping_with_threads_time = time() - time_start
     print(f"---> Completed pinging {len(hosts)} hosts using threadpool, time:", ping_with_threads_time)
@@ -121,7 +136,7 @@ def main():
 
 if __name__ == "__main__":
     try:
-        main()
+        asyncio.run(main())
     except KeyboardInterrupt:
         print("\n\nExiting host-monitor")
         exit()
