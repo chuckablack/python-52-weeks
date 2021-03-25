@@ -22,10 +22,6 @@ def hosts():
     if request.method == "GET":
         return global_hosts
 
-    elif request.method == "POST":
-        global_hosts = request.get_json()
-        return {}, 204
-
     elif request.method == "PUT":
         hostname = request.args.get("hostname")
         if not hostname:
@@ -33,14 +29,6 @@ def hosts():
 
         host = request.get_json()
         global_hosts[hostname] = host
-        return {}, 204
-
-    elif request.method == "DELETE":
-        hostname = request.args.get("hostname")
-        if not hostname:
-            return "must provide hostname on DELETE", 400
-
-        del global_hosts[hostname]
         return {}, 204
 
 

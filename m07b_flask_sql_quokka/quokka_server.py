@@ -2,24 +2,16 @@ from flask import Flask, request
 from extensions import db
 
 
-def create_app():
-    app = Flask(__name__.split('.')[0])
-    app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/test.db"
-    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-    register_extensions(app)
-    return app
-
-
-def register_extensions(app):
-    db.init_app(app)
-
-
-quokka_app = create_app()
+quokka_app = Flask(__name__)
+quokka_app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:////tmp/test.db"
+quokka_app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+db.init_app(quokka_app)
 quokka_app.app_context().push()
 
 # noinspection PyUnresolvedReferences
 import db_classes
 db.create_all()
+
 from db_apis import get_all_hosts, set_host
 from db_apis import get_all_devices, set_device
 from db_apis import get_all_services, set_service

@@ -1,12 +1,7 @@
 from flask import Flask, request
 
 
-def create_app():
-    app = Flask(__name__.split('.')[0])
-    return app
-
-
-quokka_app = create_app()
+quokka_app = Flask(__name__)
 
 from db_apis import get_all_hosts, set_host
 from db_apis import get_all_devices, set_device
