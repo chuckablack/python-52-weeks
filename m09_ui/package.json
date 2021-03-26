@@ -1,0 +1,25 @@
+{
+  "name": "quokka-ui",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "material-table": "^1.56.1",
+    "react": "^16.13.1",
+    "react-charts": "^2.0.2-next.6",
+    "react-diff-viewer": "^3.1.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^0.9.5",
+    "react-vis": "^1.11.7",
+    "typeface-roboto": "0.0.75"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.10.0",
+    "@material-ui/icons": "^4.9.1"
+  },
+  "scripts": {
+    "start": "NODE_TLS_REJECT_UNAUTHORIZED=0 react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}

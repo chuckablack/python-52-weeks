@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="dad211de-23bc-4a7f-a671-e7e6eea3fab6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../m09_server/ServiceMonitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/compliance.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/db_apis.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/device_monitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/devices.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/extensions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/host_monitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/host_portscan.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/quokka_constants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/quokka_server.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/run-monitor-all.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/service_monitor.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/services.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_server/stop-monitor-all.sh" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env-bak" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/quokka-ui.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quokka-ssl.crt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/quokka-ssl.key" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/DashboardAppBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Devices.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Hosts.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Services.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/util.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m07d_common/device_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/../m07d_common/device_display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m07d_common/host_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/../m07d_common/host_display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../m07d_common/service_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/../m07d_common/service_display.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1eQIG9MrszRHo6GGQKMFYyZYXBK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$USER_HOME$/quokka/quokka-ui/src/components/Hosts.js" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/components" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="dad211de-23bc-4a7f-a671-e7e6eea3fab6" name="Default Changelist" comment="" />
+      <created>1594247292259</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594247292259</updated>
+      <workItem from="1594247302357" duration="3238000" />
+      <workItem from="1594311410759" duration="349000" />
+      <workItem from="1594335500998" duration="52000" />
+      <workItem from="1594419759041" duration="8431000" />
+      <workItem from="1594487179698" duration="1792000" />
+      <workItem from="1594511219868" duration="52000" />
+      <workItem from="1594511497213" duration="151000" />
+      <workItem from="1595001948611" duration="740000" />
+      <workItem from="1595177409000" duration="713000" />
+      <workItem from="1595280342951" duration="695000" />
+      <workItem from="1598464336462" duration="30826000" />
+      <workItem from="1599060021536" duration="598000" />
+      <workItem from="1599061728828" duration="4168000" />
+      <workItem from="1599079622249" duration="1742000" />
+      <workItem from="1599081663299" duration="837000" />
+      <workItem from="1599437005638" duration="1477000" />
+      <workItem from="1599750926869" duration="22905000" />
+      <workItem from="1600277342484" duration="9037000" />
+      <workItem from="1611089056562" duration="158000" />
+      <workItem from="1616779938370" duration="37000" />
+      <workItem from="1616781638413" duration="7659000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/components/DashboardAppBar.js</url>
+          <line>102</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

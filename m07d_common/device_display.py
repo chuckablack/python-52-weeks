@@ -60,7 +60,7 @@ def print_devices(devices, previous_devices):
             + Fore.WHITE
         )
 
-    print("\n\n")
+    print()
     for remaining in range(DISPLAY_WAIT_TIME, 0, -1):
         sys.stdout.write("\r")
         sys.stdout.write(f"  Refresh: {remaining:3d} seconds remaining.")
