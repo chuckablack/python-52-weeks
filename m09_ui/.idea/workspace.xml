@@ -20,52 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dad211de-23bc-4a7f-a671-e7e6eea3fab6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../m09_server/ServiceMonitor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/compliance.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/db_apis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/device_monitor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/devices.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/extensions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/host_monitor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/host_portscan.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/quokka_constants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/quokka_server.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/run-monitor-all.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/service_monitor.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/services.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../m09_server/stop-monitor-all.sh" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.env-bak" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/quokka-ui.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quokka-ssl.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quokka-ssl.key" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/DashboardAppBar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Devices.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Hosts.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Services.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/util.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/logo.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../m07d_common/device_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/../m07d_common/device_display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../m07d_common/host_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/../m07d_common/host_display.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../m07d_common/service_display.py" beforeDir="false" afterPath="$PROJECT_DIR$/../m07d_common/service_display.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env-bak" beforeDir="false" afterPath="$PROJECT_DIR$/.env-bak" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Devices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Devices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hosts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Services.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +52,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/quokka/quokka-ui/src/components/Hosts.js" />
+    <property name="last_opened_file_path" value="$USER_HOME$/quokka/quokka-ui" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -100,6 +60,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -138,7 +99,7 @@
       <workItem from="1600277342484" duration="9037000" />
       <workItem from="1611089056562" duration="158000" />
       <workItem from="1616779938370" duration="37000" />
-      <workItem from="1616781638413" duration="7659000" />
+      <workItem from="1616781638413" duration="28104000" />
     </task>
     <servers />
   </component>

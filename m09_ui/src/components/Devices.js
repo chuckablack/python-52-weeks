@@ -106,6 +106,14 @@ class Devices extends Component {
                         sorting: true,
                         padding: "dense",
                         pageSize: 10,
+                        rowStyle: (rowData) => {
+                            if(!rowData.availability) {
+                                return {color: 'red'};
+                            }
+                            else {
+                                return {color: 'chartreuse'}
+                            }
+                        }
                     }}
                 />
             </div>

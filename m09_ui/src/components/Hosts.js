@@ -53,6 +53,13 @@ class Hosts extends Component {
     render() {
 
         const {hosts} = this.state;
+        if("amazon-59bf31d16.home" in hosts) {
+            console.log("found it!")
+            console.log(hosts["amazon-59bf31d16.home"].hostname)
+        }
+        else {
+            console.log("did not find it.")
+        }
 
         return (
 
@@ -75,8 +82,8 @@ class Hosts extends Component {
                             title: 'Status',
                             render: rowData =>
                                 rowData.availability ?
-                                    <CheckCircleIcon style={{color: green[500]}}/>
-                                    : <CancelIcon style={{color: red[500]}}/>,
+                                    <CheckCircleIcon style={{color: green}}/>
+                                    : <CancelIcon style={{color: red}}/>,
                             customSort: (a, b) => {
                                 if( a.availability && !b.availability ) return 1;
                                 else if (a.availability === b.availability ) return 0
@@ -86,8 +93,8 @@ class Hosts extends Component {
                         {   title: 'Hostname',
                             field: 'hostname',
                             customSort: (a, b) => {
-                                if( a.name.toUpperCase() > b.name.toUpperCase() ) return 1;
-                                else if( a.name.toUpperCase() < b.name.toUpperCase() ) return -1;
+                                if( a.hostname.toUpperCase() > b.hostname.toUpperCase() ) return 1;
+                                else if( a.hostname.toUpperCase() < b.hostname.toUpperCase() ) return -1;
                                 else return 0;
                             }
                         },
@@ -100,9 +107,16 @@ class Hosts extends Component {
                     options={{
                         sorting: true,
                         padding: "dense",
-                        pageSize: 10,
+                        pageSize: 20,
+                        rowStyle: (rowData) => {
+                            if(!rowData.availability) {
+                                return {color: 'red'};
+                            }
+                            else {
+                                return {color: 'chartreuse'}
+                            }
+                        }
                     }}
-
                 />
             </div>
         );
