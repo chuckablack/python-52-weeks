@@ -15,8 +15,6 @@ def get_all_hosts():
 
 def set_host(host):
 
-    search = {"hostname": host["hostname"]}
-    # host_obj = db.session.query(Host).filter_by(**search).one_or_none()
     host_obj = db.session.query(Host).filter_by(hostname=host["hostname"]).one_or_none()
     if not host_obj:
         host_obj = Host(**host)
@@ -45,8 +43,6 @@ def get_all_services():
 
 def set_service(service):
 
-    search = {"name": service["name"]}
-    # service_obj = db.session.query(Service).filter_by(**search).one_or_none()
     service_obj = db.session.query(Service).filter_by(name=service["name"]).one_or_none()
     if not service_obj:
         service_obj = Service(**service)
@@ -75,8 +71,6 @@ def get_all_devices():
 
 def set_device(device):
 
-    search = {"name": device["name"]}
-    # device_obj = db.session.query(Device).filter_by(**search).one_or_none()
     device_obj = db.session.query(Device).filter_by(name=device["name"]).one_or_none()
     if not device_obj:
         device_obj = Device(**device)
