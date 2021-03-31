@@ -11,6 +11,7 @@ def get_hosts():
     response = requests.get("http://127.0.0.1:5001/hosts")
     if response.status_code != 200:
         print(f" !!!  Failed to retrieve hosts from server: {response.reason}")
+        print(f"      ... Is flask-quokka running?")
         return {}
 
     print(" Hosts successfully retrieved")
@@ -56,5 +57,6 @@ def update_host(host):
             f"{str(datetime.now())[:-3]}: Error posting to /hosts, response: {rsp.status_code}, {rsp.content}"
         )
         print(f" !!!  Unsuccessful attempt to update host status via REST API: {host['hostname']}")
+        print(f"      ... Is flask-quokka running?")
     else:
         print(f" Successfully updated host status via REST API: {host['hostname']}")
