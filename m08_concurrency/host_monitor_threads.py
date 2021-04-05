@@ -23,13 +23,14 @@ def ping_host(host):
 
 def main():
 
-    discovery()
+    # discovery()
 
     hosts = get_hosts()
     print(f"\n---> Starting to ping {len(hosts)} hosts using threads")
 
     time_start = time()
 
+    # ----- PING USING THREADS --------------------
     ping_host_threads = list()
     for host in hosts.values():
         ping_thread = threading.Thread(target=ping_host, args=(host,))
@@ -42,6 +43,7 @@ def main():
     ping_with_threads_time = time() - time_start
     print(f"---> Completed pinging {len(hosts)} hosts using threads, time:", ping_with_threads_time)
 
+    # ----- PING ONE AT A TIME --------------------
     print(f"\n---> Starting to ping {len(hosts)} hosts NOT using threads")
     time_start = time()
 

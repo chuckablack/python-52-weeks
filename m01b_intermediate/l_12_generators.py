@@ -1,4 +1,4 @@
-from util.create_utils import create_device, create_devices, create_devices_gen
+from m01_basics.util.create_utils import create_device, create_devices, create_devices_gen
 import time
 
 
@@ -39,7 +39,8 @@ if __name__ == '__main__':
             print(f"--- ---> in:  {dict_search_time} msec")
             print(f"--- ---> id of device:", id(devices_dict[ip_to_find]))
 
-        print(f"conclusion: dictionary search was {int(generator_search_time/dict_search_time)} times faster than generator search")
+            print(f"conclusion: dictionary search was {int(generator_search_time/dict_search_time)}" +
+                  f"times faster than generator search")
 
     # SIMPLE GENERATOR COMPREHENSION
     print("\n\n____ DEVICE INFO PARSING USING GENERATOR COMPREHENSION ____________________\n")

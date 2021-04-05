@@ -100,8 +100,9 @@ class Hosts extends Component {
                         },
                         { title: 'IP Address', field: 'ip_address', defaultSort: 'asc' },
                         { title: 'MAC Address', field: 'mac_address' },
-                        { title: 'Rsp Time', render: rowData =>  rowData.response_time.toFixed(3) },
+//                        { title: 'Rsp Time', render: rowData =>  rowData.response_time.toFixed(3) },
                         { title: 'Last Heard', field: 'last_heard' },
+                        { title: 'Open Ports', field: 'open_tcp_ports'}
                     ]}
                     data={ Object.values(hosts) }
                     options={{
@@ -111,6 +112,9 @@ class Hosts extends Component {
                         rowStyle: (rowData) => {
                             if(!rowData.availability) {
                                 return {color: 'red'};
+                            }
+                            else if(('open_tcp_ports' in rowData) && (rowData.open_tcp_ports.length > 2)) {
+                                return {color: 'yellow'}
                             }
                             else {
                                 return {color: 'chartreuse'}

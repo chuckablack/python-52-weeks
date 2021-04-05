@@ -43,21 +43,21 @@ def ping_host(host):
 
 async def main():
 
-    discovery()
+    # discovery()
 
     hosts = get_hosts()
     print(f"\n---> Starting to ping {len(hosts)} hosts using asyncio")
 
     time_start = time()
 
-    # print(f"main: gather for {hosts.keys()}")
+    # ----- PING USING ASYNCIO --------------------
     ping_hosts = [ping_host_async(host) for host in hosts.values()]
     await asyncio.gather(*ping_hosts)
-    # print(f"main: gather complete")
 
     ping_with_asyncio_time = time() - time_start
     print(f"---> Completed pinging {len(hosts)} hosts using asyncio, time: {ping_with_asyncio_time:3f}")
 
+    # ----- PING ONE AT A TIME --------------------
     print(f"\n---> Starting to ping {len(hosts)} hosts NOT using asyncio")
     time_start = time()
 
@@ -68,8 +68,8 @@ async def main():
     print(f"---> Completed pinging {len(hosts)} hosts NOT using asyncio, time: {ping_without_asyncio_time:3f}")
 
     print("\nResults:")
-    print(f"     Using asyncio:     {ping_with_asyncio_time:3f}")
-    print(f"     Not using asyncio: {ping_without_asyncio_time:3f}\n")
+    print(f"     Using asyncio:     {ping_with_asyncio_time:>7.3f}")
+    print(f"     Not using asyncio: {ping_without_asyncio_time:>7.3f}\n")
 
 
 if __name__ == "__main__":
