@@ -100,7 +100,6 @@ class Hosts extends Component {
                         },
                         { title: 'IP Address', field: 'ip_address', defaultSort: 'asc' },
                         { title: 'MAC Address', field: 'mac_address' },
-//                        { title: 'Rsp Time', render: rowData =>  rowData.response_time.toFixed(3) },
                         { title: 'Last Heard', field: 'last_heard' },
                         { title: 'Open Ports', field: 'open_tcp_ports'}
                     ]}
@@ -108,7 +107,7 @@ class Hosts extends Component {
                     options={{
                         sorting: true,
                         padding: "dense",
-                        pageSize: 20,
+                        pageSize: 10,
                         rowStyle: (rowData) => {
                             if(!rowData.availability) {
                                 return {color: 'red'};

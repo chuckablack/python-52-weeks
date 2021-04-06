@@ -6,7 +6,6 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 import {green, red} from '@material-ui/core/colors';
 import MaterialTable from "material-table";
-import _ from "lodash";
 
 class Services extends Component {
 
@@ -32,26 +31,9 @@ class Services extends Component {
         fetch(requestUrl)
             .then(res => res.json())
             .then((data) => {
-                // var prevServices = this.state.services;
                 this.setState({services: data})
                 this.setState({countdownValue: process.env.REACT_APP_REFRESH_RATE})
 
-                // var services = Object.values(data)
-                // for (var i=0; i<services.length; i++) {
-                //     let service = services[i];
-                //     let serviceName = service['name']
-                //     if (serviceName in prevServices) {
-                //         console.log(service)
-                //         console.log(prevServices[serviceName])
-                //         // if (JSON.stringify(service) === JSON.stringify(prevServices[serviceName])) {
-                //         if (_.isEqual(service, prevServices[serviceName])) {
-                //             service.sameAsPrev = true;
-                //             console.log("FOUND ONE! sameAsPrev is true!")
-                //         } else {
-                //             service.sameAsPrev = false;
-                //         }
-                //     }
-                // }
             })
             .catch((e) => {
                 console.log(e)
@@ -130,9 +112,6 @@ class Services extends Component {
                             else if(rowData.response_time > rowData.sla_response_time) {
                                 return {color: 'Magenta'}
                             }
-                            // else if(rowData.sameAsPrev) {
-                            //     return {color: 'green'}
-                            // }
                             else {
                                 return {color: 'chartreuse'}
                             }

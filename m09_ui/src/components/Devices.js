@@ -95,10 +95,9 @@ class Devices extends Component {
                         { title: 'Hostname', field: 'hostname', defaultSort: 'asc' },
                         { title: 'Vendor:OS', render: rowData => rowData.vendor + ":" + rowData.os},
                         { title: 'IP Address', field: 'ip_address' },
-                        { title: 'CPU%', field: 'cpu' },
-                        { title: 'Memory%', field: 'memory' },
+                        { title: 'Model', field: 'model' },
+                        { title: 'Version', field: 'os_version' },
                         { title: 'Rsp Time', render: rowData =>  rowData.response_time.toFixed(3) },
-                        // { title: 'Rsp Time', field: 'response_time' },
                         { title: 'Last Checked', field: 'last_heard' },
                     ]}
                     data={  Object.values(devices) }

@@ -5,5 +5,5 @@ import Dashboard from './components/Dashboard'
 
 ReactDOM.render(
     <Dashboard deviceName='' />,
-  document.getElementById('root')
+    document.getElementById('root')
 );
