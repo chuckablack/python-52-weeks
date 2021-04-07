@@ -13,7 +13,6 @@ class Services extends Component {
         super(props);
         this.state = {
             services: [],
-            dashboard: props.dashboard,
             countdownValue: process.env.REACT_APP_REFRESH_RATE,
         };
     }
@@ -68,7 +67,7 @@ class Services extends Component {
                     }}>Refresh Services</Button>
                 </Grid>
                 <MaterialTable
-                    title="Services Availability and Response Time"
+                    title="Services with Availability, Response Time, SLA Violations"
                     columns={[
                         {
                             title: 'Availability',

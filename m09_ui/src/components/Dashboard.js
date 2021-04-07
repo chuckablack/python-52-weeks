@@ -14,8 +14,6 @@ class Dashboard extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            deviceName: this.props.deviceName,
-            hostId: this.props.hostId,
             show: "devices",
         };
     }

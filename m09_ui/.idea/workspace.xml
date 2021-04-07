@@ -20,10 +20,34 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dad211de-23bc-4a7f-a671-e7e6eea3fab6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/MyProject.komodoproject" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/.idea/m09_ui_2.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/public/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/public/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/public/logo192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/public/logo512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/public/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/public/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/App.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/App.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/App.test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/index.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/reportWebVitals.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../m09_ui_2/quokka-ui/src/setupTests.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/quokka-ui.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/quokka-ui.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/DashboardAppBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/DashboardAppBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Devices.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Devices.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Hosts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Hosts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Services.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Services.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +68,20 @@
     <dismissed value="$PROJECT_DIR$/package.json" />
   </component>
   <component name="ProjectId" id="1eQIG9MrszRHo6GGQKMFYyZYXBK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/quokka/quokka-ui" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../m09_ui_2" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -104,6 +132,8 @@
       <workItem from="1617472446886" duration="1332000" />
       <workItem from="1617660373309" duration="629000" />
       <workItem from="1617722557182" duration="2605000" />
+      <workItem from="1617809337066" duration="3530000" />
+      <workItem from="1617829413809" duration="270000" />
     </task>
     <servers />
   </component>

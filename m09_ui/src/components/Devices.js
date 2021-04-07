@@ -13,7 +13,6 @@ class Devices extends Component {
         super(props);
         this.state = {
             devices: [],
-            dashboard: props.dashboard,
             countdownValue: process.env.REACT_APP_REFRESH_RATE,
         };
     }
@@ -68,7 +67,7 @@ class Devices extends Component {
                     }}>Refresh Devices</Button>
                 </Grid>
                 <MaterialTable
-                    title="Device Status"
+                    title="Devices with Availability, Response Time, Model, Version"
                     columns={[
                         {
                             width: null,

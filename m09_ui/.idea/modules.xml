@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../m09_ui_2/.idea/m09_ui_2.iml" filepath="$PROJECT_DIR$/../m09_ui_2/.idea/m09_ui_2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/quokka-ui.iml" filepath="$PROJECT_DIR$/.idea/quokka-ui.iml" />
     </modules>
   </component>

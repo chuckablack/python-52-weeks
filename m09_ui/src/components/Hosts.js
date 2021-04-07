@@ -13,7 +13,6 @@ class Hosts extends Component {
         super(props);
         this.state = {
             hosts: [],
-            dashboard: props.dashboard,
             countdownValue: process.env.REACT_APP_REFRESH_RATE,
        };
     }
@@ -76,7 +75,7 @@ class Hosts extends Component {
                     }}>Refresh Hosts</Button>
                 </Grid>
                 <MaterialTable
-                    title="Discovered Hosts with Availability and Response Time"
+                    title="Discovered Hosts with Availability, Open TCP Ports"
                     columns={[
                         {
                             title: 'Status',
@@ -100,6 +99,7 @@ class Hosts extends Component {
                         },
                         { title: 'IP Address', field: 'ip_address', defaultSort: 'asc' },
                         { title: 'MAC Address', field: 'mac_address' },
+                        { title: 'Rsp Time', field: 'response_time' },
                         { title: 'Last Heard', field: 'last_heard' },
                         { title: 'Open Ports', field: 'open_tcp_ports'}
                     ]}
