@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button'
 import Grid from "@material-ui/core/Grid";
-import 'typeface-roboto'
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 import {green, red} from '@material-ui/core/colors';
@@ -52,13 +51,6 @@ class Hosts extends Component {
     render() {
 
         const {hosts} = this.state;
-        if("amazon-59bf31d16.home" in hosts) {
-            console.log("found it!")
-            console.log(hosts["amazon-59bf31d16.home"].hostname)
-        }
-        else {
-            console.log("did not find it.")
-        }
 
         return (
 
@@ -99,7 +91,7 @@ class Hosts extends Component {
                         },
                         { title: 'IP Address', field: 'ip_address', defaultSort: 'asc' },
                         { title: 'MAC Address', field: 'mac_address' },
-                        { title: 'Rsp Time', field: 'response_time' },
+                        { title: 'Rsp Time', field: 'response_time', type: 'numeric' }, 
                         { title: 'Last Heard', field: 'last_heard' },
                         { title: 'Open Ports', field: 'open_tcp_ports'}
                     ]}
@@ -118,7 +110,8 @@ class Hosts extends Component {
                             else {
                                 return {color: 'chartreuse'}
                             }
-                        }
+                        },
+                        cellStyle: { fontSize: 14, }
                     }}
                 />
             </div>

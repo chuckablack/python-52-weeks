@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button'
 import Grid from "@material-ui/core/Grid";
-import 'typeface-roboto'
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import {green, red} from "@material-ui/core/colors";
 import CancelIcon from "@material-ui/icons/Cancel";
@@ -111,7 +110,8 @@ class Devices extends Component {
                             else {
                                 return {color: 'chartreuse'}
                             }
-                        }
+                        },
+                        cellStyle: { fontSize: 14, }
                     }}
                 />
             </div>

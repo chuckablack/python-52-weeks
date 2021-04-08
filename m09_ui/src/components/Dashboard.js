@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 import Grid from "@material-ui/core/Grid";
-import 'typeface-roboto'
-
 import DashboardAppBar from "./DashboardAppBar";
 import Devices from "./Devices";
 import Hosts from "./Hosts";
