@@ -1,0 +1,43 @@
+{
+  "_from": "babel-plugin-jest-hoist@^18.0.0",
+  "_id": "babel-plugin-jest-hoist@18.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-QVDnDsq1YObnNErchJSYBy004So=",
+  "_location": "/babel-plugin-jest-hoist",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "babel-plugin-jest-hoist@^18.0.0",
+    "name": "babel-plugin-jest-hoist",
+    "escapedName": "babel-plugin-jest-hoist",
+    "rawSpec": "^18.0.0",
+    "saveSpec": null,
+    "fetchSpec": "^18.0.0"
+  },
+  "_requiredBy": [
+    "/babel-preset-jest"
+  ],
+  "_resolved": "https://registry.npmjs.org/babel-plugin-jest-hoist/-/babel-plugin-jest-hoist-18.0.0.tgz",
+  "_shasum": "4150e70ecab560e6e7344adc849498072d34e12a",
+  "_spec": "babel-plugin-jest-hoist@^18.0.0",
+  "_where": "/home/chuck/quokka/quokka-ui/node_modules/babel-preset-jest",
+  "bugs": {
+    "url": "https://github.com/facebook/jest/issues"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "Babel plugin to hoist `jest.disableAutomock`, `jest.enableAutomock`, `jest.unmock`, `jest.mock`, calls above `import` statements. This plugin is automatically included when using [babel-jest](https://github.com/facebook/jest/tree/master/packages/babel-jest).",
+  "homepage": "https://github.com/facebook/jest#readme",
+  "license": "BSD-3-Clause",
+  "main": "build/index.js",
+  "name": "babel-plugin-jest-hoist",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/jest.git"
+  },
+  "scripts": {
+    "test": "../../packages/jest-cli/bin/jest.js"
+  },
+  "version": "18.0.0"
+}

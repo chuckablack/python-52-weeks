@@ -1,0 +1,46 @@
+{
+  "_from": "babel-jest@18.0.0",
+  "_id": "babel-jest@18.0.0",
+  "_inBundle": false,
+  "_integrity": "sha1-F+u6jLMoXJBthZ6HB+Tnl5X7ZeM=",
+  "_location": "/babel-jest",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "version",
+    "registry": true,
+    "raw": "babel-jest@18.0.0",
+    "name": "babel-jest",
+    "escapedName": "babel-jest",
+    "rawSpec": "18.0.0",
+    "saveSpec": null,
+    "fetchSpec": "18.0.0"
+  },
+  "_requiredBy": [
+    "/jest-runtime",
+    "/react-scripts"
+  ],
+  "_resolved": "https://registry.npmjs.org/babel-jest/-/babel-jest-18.0.0.tgz",
+  "_shasum": "17ebba8cb3285c906d859e8707e4e79795fb65e3",
+  "_spec": "babel-jest@18.0.0",
+  "_where": "/home/chuck/quokka/quokka-ui/node_modules/react-scripts",
+  "bugs": {
+    "url": "https://github.com/facebook/jest/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "babel-core": "^6.0.0",
+    "babel-plugin-istanbul": "^3.0.0",
+    "babel-preset-jest": "^18.0.0"
+  },
+  "deprecated": false,
+  "description": "[Babel](https://github.com/babel/babel) [jest](https://github.com/facebook/jest) plugin",
+  "homepage": "https://github.com/facebook/jest#readme",
+  "license": "BSD-3-Clause",
+  "main": "build/index.js",
+  "name": "babel-jest",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/facebook/jest.git"
+  },
+  "version": "18.0.0"
+}

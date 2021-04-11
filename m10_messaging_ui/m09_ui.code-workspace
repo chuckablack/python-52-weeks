@@ -1,0 +1,11 @@
+{
+	"folders": [
+		{
+			"path": "../../quokka/quokka-ui"
+		}
+	],
+	"settings": {
+		"workbench.tree.indent": 24,
+		"editor.fontSize": 12
+	}
+}
