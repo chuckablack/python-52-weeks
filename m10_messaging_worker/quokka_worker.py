@@ -46,11 +46,11 @@ def receive_work_request(capture_channel, method, _, body):
 
     capture_channel.basic_ack(delivery_tag=method.delivery_tag)
 
-    process_command(work_info["work_type"], work_info)
+    process_work_request(work_info["work_type"], work_info)
     print("\n\n [*] Worker: waiting for messages.")
 
 
-def process_command(work_type, work_info):
+def process_work_request(work_type, work_info):
 
     if "quokka" not in work_info:
         quokka = "localhost"

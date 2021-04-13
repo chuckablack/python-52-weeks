@@ -30,7 +30,6 @@ class PortscanThread(Thread):
 
     def process_scan(self, scan_output):
 
-        print(f"PortscanThread: sending portscan: {scan_output}")
         status_code = send_portscan(
             gethostname(),
             self.destination,
@@ -39,7 +38,7 @@ class PortscanThread(Thread):
             str(datetime.now())[:-1],
             scan_output,
         )
-        print(f"PortscanThread: portscan sent, result={status_code}\n")
+        print(f"\nPortscanThread: portscan sent, result={status_code}\n")
 
     def run(self):
 
