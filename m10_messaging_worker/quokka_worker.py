@@ -31,7 +31,15 @@ def start_receiving():
     channel.basic_consume(
         on_message_callback=receive_work_request, queue=worker_queue
     )
-    channel.start_consuming()
+
+    try:
+        channel.start_consuming()
+    except KeyboardInterrupt:
+        print(f"\n\n\n---> Worker: shutting down")
+        channel.close()
+        connection.close()
+        exit()
+
 
 
 def receive_work_request(capture_channel, method, _, body):

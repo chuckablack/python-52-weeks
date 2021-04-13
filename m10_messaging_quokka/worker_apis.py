@@ -16,7 +16,8 @@ def start_host_portscan(hostname):
     portscan_info_json = json.dumps(portscan_info)
 
     credentials = pika.PlainCredentials('quokkaUser', 'quokkaPass')
-    connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", credentials=credentials))
+    # connection = pika.BlockingConnection(pika.ConnectionParameters(host="localhost", credentials=credentials))
+    connection = pika.BlockingConnection(pika.ConnectionParameters("localhost"))
     channel = connection.channel()
     channel.queue_declare(queue="quokka-worker", durable=True)
     channel.basic_publish(
