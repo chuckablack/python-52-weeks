@@ -34,12 +34,12 @@ def start_receiving():
 
     try:
         channel.start_consuming()
+
     except KeyboardInterrupt:
         print(f"\n\n\n---> Worker: shutting down")
         channel.close()
         connection.close()
         exit()
-
 
 
 def receive_work_request(capture_channel, method, _, body):
@@ -61,7 +61,7 @@ def receive_work_request(capture_channel, method, _, body):
 def process_work_request(work_type, work_info):
 
     if "quokka" not in work_info:
-        quokka = "localhost"
+        quokka = "localhost:5001"
     else:
         quokka = work_info["quokka"]
 
@@ -78,14 +78,5 @@ def process_work_request(work_type, work_info):
     work_thread.start()
 
 
-def main():
-
-    start_receiving()
-
-
 if __name__ == "__main__":
-    try:
-        main()
-    except KeyboardInterrupt:
-        print(f"\n\n\n---> Worker: shutting down")
-        exit()
+    start_receiving()
