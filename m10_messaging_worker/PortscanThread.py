@@ -14,14 +14,14 @@ class PortscanThread(Thread):
         print(f"PortscanThread: initializing thread object: scan_info={scan_info}")
 
         if (
-            "host" not in scan_info
+            "target" not in scan_info
             or "token" not in scan_info
         ):
             print(f"PortscanThread: missing information in scan_info: {scan_info}")
             return
 
         self.destination = destination
-        self.host = scan_info["host"]
+        self.target = scan_info["target"]
         self.token = scan_info["token"]
         self.port_range = "1-1024"
         # self.scan_arguments = "-sT -sU -O --host-time 300"
@@ -33,7 +33,7 @@ class PortscanThread(Thread):
         status_code = send_portscan(
             gethostname(),
             self.destination,
-            self.host,
+            self.target,
             self.token,
             str(datetime.now())[:-1],
             scan_output,
@@ -42,13 +42,13 @@ class PortscanThread(Thread):
 
     def run(self):
 
-        print(f"PortscanThread: starting portscan: host   = {self.host}")
+        print(f"PortscanThread: starting portscan: target    = {self.target}")
         print(f"PortscanThread: starting portscan: port_range= {self.port_range}")
         print(f"PortscanThread: starting portscan: arguments = {self.scan_arguments}")
 
         nm = nmap.PortScanner()
         scan_output = nm.scan(
-            self.host, self.port_range, arguments=self.scan_arguments
+            self.target, self.port_range, arguments=self.scan_arguments
         )
         pprint(scan_output)
         self.process_scan(scan_output)

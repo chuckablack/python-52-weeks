@@ -3,7 +3,7 @@ from datetime import datetime
 from socket import gethostname
 from threading import Thread
 
-from scapy.layers.inet import traceroute
+import scapy.layers.inet as scapy
 from util import send_traceroute
 
 
@@ -45,7 +45,7 @@ class TracerouteThread(Thread):
         print(f"TracerouteThread: starting traceroute: target = {self.target}")
 
         try:
-            traceroute_output = traceroute(self.target, verbose=0)
+            traceroute_output = scapy.traceroute(self.target, verbose=0)
             self.process_traceroute(traceroute_output[0])
         except BaseException as e:
             print(f"!!! Caught error attempting to do traceroute: {e}")

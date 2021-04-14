@@ -5,7 +5,7 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import CancelIcon from '@material-ui/icons/Cancel';
 import {green, red} from '@material-ui/core/colors';
 import MaterialTable from "material-table";
-import PolicyOutlinedIcon from '@material-ui/icons/PolicyOutlined'
+import PolicyRoundedIcon from '@material-ui/icons/PolicyRounded'
 import Dialog from '@material-ui/core/Dialog'
 import DialogTitle from '@material-ui/core/DialogTitle'
 import DialogActions from "@material-ui/core/DialogActions";
@@ -52,7 +52,7 @@ class Hosts extends Component {
     initiateExtendedPortScan(hostname) {
 
         this.setState({extendedPortScanResults: {result: "initiating scan ..."}})
-        let requestUrl = process.env.REACT_APP_QUOKKA_HOST + '/host/scan?hostname=' + hostname
+        let requestUrl = process.env.REACT_APP_QUOKKA_HOST + '/scan?target=' + hostname
         const requestOptions = { method: 'POST'}
         fetch(requestUrl, requestOptions)
             .then(res => res.json())
@@ -66,7 +66,7 @@ class Hosts extends Component {
 
     fetchExtendedPortScanResults(hostname) {
        this.setState({extendedPortScanResults: {result: "retrieving scan results ..."}})
-        let requestUrl = process.env.REACT_APP_QUOKKA_HOST + '/host/scan?hostname=' + hostname + '&token=' + this.state.token
+        let requestUrl = process.env.REACT_APP_QUOKKA_HOST + '/scan?target=' + hostname + '&token=' + this.state.token
         const requestOptions = { method: 'GET'}
         fetch(requestUrl, requestOptions)
             .then(res => res.json())
@@ -163,7 +163,7 @@ class Hosts extends Component {
                     }}
                     actions={[
                         {
-                            icon: PolicyOutlinedIcon,
+                            icon: PolicyRoundedIcon,
                             tooltip: 'Extended Scan for open ports',
                             onClick: (event, rowData) => {
                                 this.renderExtendedPortScanDialog(rowData.hostname)

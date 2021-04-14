@@ -44,15 +44,17 @@ def start_receiving():
 
 def receive_work_request(capture_channel, method, _, body):
 
+    capture_channel.basic_ack(delivery_tag=method.delivery_tag)
+
     work_info = json.loads(body)
     if "work_type" not in work_info:
         print(f" !!! Received work request with no work_type: {work_info}")
+        return
     if work_info["work_type"] not in [CAPTURE, PORTSCAN, TRACEROUTE]:
         print(f" !!! Received work request for unknown work_type: {work_info['work_type']}")
+        return
 
     print(f"Received work: {work_info['work_type']} full work info: {work_info}")
-
-    capture_channel.basic_ack(delivery_tag=method.delivery_tag)
 
     process_work_request(work_info["work_type"], work_info)
     print("\n\n [*] Worker: waiting for messages.")

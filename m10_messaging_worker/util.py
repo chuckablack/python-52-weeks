@@ -77,11 +77,11 @@ def bytes_to_string(data):
         return data
 
 
-def send_portscan(source, destination, hostname, token, timestamp, scan_output):
+def send_portscan(source, destination, target, token, timestamp, scan_output):
 
     portscan_payload = {
         "source": source,
-        "hostname": hostname,
+        "target": target,
         "token": token,
         "timestamp": timestamp,
         "scan_output": pformat(scan_output),
@@ -91,7 +91,7 @@ def send_portscan(source, destination, hostname, token, timestamp, scan_output):
     )
     if rsp.status_code != 204:
         print(
-            f"{str(datetime.now())[:-3]}: Error calling /portscan/store response: {rsp.status_code}, {rsp.content}"
+            f"{str(datetime.now())[:-3]}: Error calling /worker/portscan response: {rsp.status_code}, {rsp.content}"
         )
 
     return rsp.status_code
@@ -107,11 +107,11 @@ def send_traceroute(source, destination, target, token, timestamp, traceroute_gr
         "traceroute_img": traceroute_graph_bytes,
     }
     rsp = requests.post(
-        "http://" + destination + "/traceroute/store", json=portscan_payload
+        "http://" + destination + "/worker/traceroute", json=portscan_payload
     )
-    if rsp.status_code != 200:
+    if rsp.status_code != 204:
         print(
-            f"{str(datetime.now())[:-3]}: Error calling /traceroute/store response: {rsp.status_code}, {rsp.content}"
+            f"{str(datetime.now())[:-3]}: Error calling /worker/traceroute response: {rsp.status_code}, {rsp.content}"
         )
 
     return rsp.status_code
