@@ -87,9 +87,9 @@ class Hosts extends Component {
         clearInterval(this.interval)
     }
 
-    renderExtendedPortScanDialog(hostId, ip) {
-        this.initiateExtendedPortScan(hostId)
-        this.setState({openExtendedPortScanDialog: true, portScanHost: ip})
+    renderExtendedPortScanDialog(hostname) {
+        this.initiateExtendedPortScan(hostname)
+        this.setState({openExtendedPortScanDialog: true, portScanHost: hostname})
     }
 
     handleCloseExtendedPortScanDialog(parent) {
