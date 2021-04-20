@@ -126,7 +126,8 @@ class WorkerScanEndpoint(Resource):
 @api.route("/traceroute", methods=["GET", "POST"])
 class TracerouteEndpoint(Resource):
     @staticmethod
-    @api.doc(params={"token": "the token returned from the corresponding POST that initiated the traceroute"})
+    @api.doc(params={"token": "the token returned from the corresponding POST that initiated the traceroute",
+                     "target": "the target for the traceroute request"})
     @api.response(400, "must provide token and target to get traceroute")
     @api.response(200, 'Success', ApiModels.traceroute_data)
     def get():
