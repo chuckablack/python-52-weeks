@@ -25,6 +25,7 @@ class ApiModels:
                 "last_heard": fields.String(example="2021-04-19 14:42:15.185"),
                 "availability": fields.Boolean(example="true"),
                 "response_time": fields.Integer(example="0.005"),
+                "open_tcp_ports": fields.String(example="[22, 80]")
             },
         )
         ApiModels.device_fields = api.model(
