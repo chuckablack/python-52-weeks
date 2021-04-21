@@ -20,7 +20,7 @@ from db_apis import record_portscan_data, record_traceroute_data
 from worker_apis import start_portscan, start_traceroute
 
 
-@api.route("/hosts", methods=["GET", "PUT"])
+@api.route("/hosts")
 class HostsEndpoint(Resource):
 
     @staticmethod
@@ -42,7 +42,7 @@ class HostsEndpoint(Resource):
         return {}, 204
 
 
-@api.route("/devices", methods=["GET", "PUT"])
+@api.route("/devices")
 class DevicesEndpoint(Resource):
 
     @staticmethod
@@ -64,7 +64,7 @@ class DevicesEndpoint(Resource):
         return {}, 204
 
 
-@api.route("/services", methods=["GET", "PUT"])
+@api.route("/services")
 class ServicesEndpoint(Resource):
 
     @staticmethod
@@ -86,7 +86,7 @@ class ServicesEndpoint(Resource):
         return {}, 204
 
 
-@api.route("/scan", methods=["GET", "POST"])
+@api.route("/scan")
 class ScanEndpoint(Resource):
 
     @staticmethod
@@ -116,7 +116,7 @@ class ScanEndpoint(Resource):
         return {"token": token}
 
 
-@api.route("/worker/portscan", methods=["POST"])
+@api.route("/worker/portscan")
 class WorkerScanEndpoint(Resource):
 
     @staticmethod
@@ -129,7 +129,7 @@ class WorkerScanEndpoint(Resource):
         return {}, 204
 
 
-@api.route("/traceroute", methods=["GET", "POST"])
+@api.route("/traceroute")
 class TracerouteEndpoint(Resource):
 
     @staticmethod
@@ -163,7 +163,7 @@ class TracerouteEndpoint(Resource):
         return {"token": token}
 
 
-@api.route("/worker/traceroute", methods=["POST"])
+@api.route("/worker/traceroute")
 class WorkerTracerouteEndpoint(Resource):
 
     @staticmethod

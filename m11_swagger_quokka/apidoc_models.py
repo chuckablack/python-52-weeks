@@ -23,8 +23,8 @@ class ApiModels:
                 "mac_address": fields.String(example="00:27:02:15:5c:d5"),
                 "hostname": fields.String(example="RokuStreamingStick.home"),
                 "last_heard": fields.String(example="2021-04-19 14:42:15.185"),
-                "availability": fields.Boolean(example="true"),
-                "response_time": fields.Integer(example="0.005"),
+                "availability": fields.String(example="true"),
+                "response_time": fields.String(example="0.005"),
                 "open_tcp_ports": fields.String(example="[22, 80]")
             },
         )
@@ -39,8 +39,8 @@ class ApiModels:
                 "os": fields.String(example="iosxe"),
                 "os_version": fields.String(example="16.9.3"),
                 "last_heard": fields.String(example="2021-04-19 14:43:41.106"),
-                "availability": fields.Boolean(example="true"),
-                "response_time": fields.Integer(example="7.886"),
+                "availability": fields.String(example="true"),
+                "response_time": fields.String(example="7.886"),
             },
         )
         ApiModels.service_fields = api.model(
@@ -51,8 +51,8 @@ class ApiModels:
                 "target": fields.String(example="http://www.davidbombal.com"),
                 "data": fields.String(example=""),
                 "last_heard": fields.String(example="2021-04-19 14:43:46.102"),
-                "availability": fields.Boolean(example="true"),
-                "response_time": fields.Integer(example="1.525"),
+                "availability": fields.String(example="true"),
+                "response_time": fields.String(example="1.525"),
             },
         )
         ApiModels.hosts_response = api.model(
