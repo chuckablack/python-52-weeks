@@ -8,8 +8,10 @@ def compare_data(data1, data2):
     global stack, current_data1, current_data2, num_comparisons, visited
 
     # First check if we've been here before; if so, return immediately (don't recurse)
-    if id(data1) in visited or id(data2) in visited:
-        return True
+    if type(data1) not in {str, int, bool, float, tuple}:
+        if id(data1) in visited or id(data2) in visited:
+            print("### loop detected, returning ##########")
+            return True
 
     # Add these data objects to the list of visited nodes
     visited.add(id(data1)); visited.add(id(data2))
