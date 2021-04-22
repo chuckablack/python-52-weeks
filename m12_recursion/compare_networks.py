@@ -2,16 +2,21 @@ from m01_basics.util.create_utils import create_network
 from copy import deepcopy
 import inspect
 
-current_data1 = current_data2 = None
 
 def compare_data(data1, data2):
 
-    # print(f"data1: {data1}")
-    # print(f"data2: {data2}")
+    global stack, current_data1, current_data2, num_comparisons, visited
 
-    global current_data1, current_data2
+    # First check if we've been here before; if so, return immediately (don't recurse)
+    if id(data1) in visited or id(data2) in visited:
+        return True
+
+    # Add these data objects to the list of visited nodes
+    visited.add(id(data1)); visited.add(id(data2))
+
     current_data1 = data1
     current_data2 = data2
+    num_comparisons += 1
 
     if isinstance(data1, dict):
         if not isinstance(data2, dict): return False
@@ -45,15 +50,41 @@ def compare_data(data1, data2):
         return True
 
 
+stack = list()
+visited = set()
 network1 = create_network(num_devices=4, num_subnets=4)
 network2 = deepcopy(network1)
+current_data1 = current_data2 = None
 
-stack = list()
-print(compare_data(network1, network2))
-print(f"final stack: network1{''.join(stack)}")
+print("\n----- Compare networks: should be identical --------------------\n")
+stack.clear(); visited.clear(); num_comparisons = 0
+compare_result = compare_data(network1, network2)
+print(f"--- compare_data result, should be True: {compare_result}; num comparisons: {num_comparisons}")
+if not compare_result:
+    print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
+    print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
 
-stack = list()
+print("\n----- Compare networks: should be different --------------------\n")
+stack.clear(); visited.clear(); num_comparisons = 0
 network2["subnets"]["10.0.1.0"]["devices"][2]["name"] = "this is a silly and not real name"
-print(compare_data(network1, network2))
-print(f"data1: network1{''.join(stack)}: {current_data1}")
-print(f"data2: network1{''.join(stack)}: {current_data2}")
+compare_result = compare_data(network1, network2)
+
+print(f"--- compare_data result, should be False: {compare_result}; num comparisons: {num_comparisons}")
+if not compare_result:
+    print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
+    print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
+
+print("\n----- Compare networks: loops in network --------------------\n")
+
+# Create loop in network, test to make sure we don't recurse through visited nodes
+network_looped_1 = create_network(num_devices=4, num_subnets=4)
+network_looped_1["subnets"]["10.0.1.0"]["devices"][0]["interfaces"][0]["link"] = network_looped_1
+network_looped_2 = deepcopy(network_looped_1)
+
+stack.clear(); visited.clear(); num_comparisons = 0
+compare_result = compare_data(network_looped_1, network_looped_2)
+
+print(f"--- compare_data result, should be True: {compare_result}; num comparisons: {num_comparisons}")
+if not compare_result:
+    print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
+    print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
