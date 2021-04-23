@@ -82,7 +82,7 @@ def create_devices(num_devices=1, num_subnets=1, random_ip=False):
         print("Error: too many devices and/or subnets requested")
         return created_devices
 
-    print("beginning device creation")
+    # print("beginning device creation")
     for subnet_index in range(1, num_subnets+1):
 
         for device_index in range(1, num_devices+1):
@@ -90,7 +90,7 @@ def create_devices(num_devices=1, num_subnets=1, random_ip=False):
             device = create_device(device_index, subnet_index, random_ip)
             created_devices.append(device)
 
-    print("completed device creation")
+    # print("completed device creation")
     return created_devices
 
 
@@ -142,7 +142,7 @@ def create_devices_gen(num_devices=1, num_subnets=1):
         print("Error: too many devices and/or subnets requested")
         return None
 
-    print("beginning device creation")
+    # print("beginning device creation")
     for subnet_index in range(1, num_subnets + 1):
 
         for device_index in range(1, num_devices + 1):
