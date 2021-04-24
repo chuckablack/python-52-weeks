@@ -23,19 +23,25 @@ def compare_data(data1, data2):
 
     if isinstance(data1, dict):
         if not isinstance(data2, dict): return False
+        if len(data1) != len(data2): return False
+
         for key, value in data1.items():
             if key not in data2: return False
             stack.append("['"+key+"']")
             if not compare_data(data1[key], data2[key]): return False
             stack.pop()
+
         return True
 
     elif isinstance(data1, list) or isinstance(data1, tuple):
         if type(data1) != type(data2): return False
+        if len(data1) != len(data2): return False
+
         for index in range(0, len(data1)):
             stack.append("["+str(index)+"]")
             if not compare_data(data1[index], data2[index]): return False
             stack.pop()
+
         return True
 
     elif isinstance(data1, set):
@@ -68,7 +74,7 @@ if not compare_result:
     print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
     print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
 
-print("\nCompare networks: should be different --------------------")
+print("\nCompare networks: change name --------------------")
 stack.clear(); visited.clear(); num_comparisons = 0
 network2["subnets"]["10.0.1.0"]["devices"][2]["name"] = "this is a silly and not real name"
 compare_result = compare_data(network1, network2)
@@ -77,6 +83,26 @@ print(f"--- compare_data result, should be False: {compare_result}; num comparis
 if not compare_result:
     print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
     print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
+
+print("\nCompare networks: remove item --------------------")
+stack.clear(); visited.clear(); num_comparisons = 0
+network2 = deepcopy(network1)
+del network2["subnets"]["10.0.1.0"]["devices"][0]
+compare_result = compare_data(network1, network2)
+
+print(f"--- compare_data result, should be False: {compare_result}; num comparisons: {num_comparisons}")
+if not compare_result:
+    print("--- comparison results:")
+    print("\n--- current_data1 ------------")
+    pprint(current_data1, indent=4, sort_dicts=False)
+    print("\n--- current_data2 ------------")
+    pprint(current_data2, indent=4, sort_dicts=False)
+
+    print()
+    print(f"--- --- data1: network1{''.join(stack)}:")
+    print(f"    {[device['name'] for device in current_data1]}")
+    print(f"--- --- data2: network1{''.join(stack)}:")
+    print(f"    {[device['name'] for device in current_data2]}")
 
 print("\nCompare networks: loops in network --------------------")
 
