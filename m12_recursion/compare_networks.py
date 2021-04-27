@@ -64,7 +64,7 @@ visited = set()
 network1 = create_network(num_devices=4, num_subnets=4)
 network2 = deepcopy(network1)
 current_data1 = current_data2 = None
-# pprint(network1)
+pprint(network1)
 
 print("\nCompare networks: should be identical --------------------")
 stack.clear(); visited.clear(); num_comparisons = 0
@@ -72,17 +72,17 @@ compare_result = compare_data(network1, network2)
 print(f"--- compare_data result, should be True: {compare_result}; num comparisons: {num_comparisons}")
 if not compare_result:
     print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
-    print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
+    print(f"--- --- data2: network2{''.join(stack)}: {current_data2}")
 
 print("\nCompare networks: change name --------------------")
 stack.clear(); visited.clear(); num_comparisons = 0
-network2["subnets"]["10.0.1.0"]["devices"][2]["name"] = "this is a silly and not real name"
+network2["subnets"]["10.0.1.0"]["devices"][2]["name"] = "silly name"
 compare_result = compare_data(network1, network2)
 
 print(f"--- compare_data result, should be False: {compare_result}; num comparisons: {num_comparisons}")
 if not compare_result:
     print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
-    print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
+    print(f"--- --- data2: network2{''.join(stack)}: {current_data2}")
 
 print("\nCompare networks: remove item --------------------")
 stack.clear(); visited.clear(); num_comparisons = 0
@@ -101,7 +101,7 @@ if not compare_result:
     print()
     print(f"--- --- data1: network1{''.join(stack)}:")
     print(f"    {[device['name'] for device in current_data1]}")
-    print(f"--- --- data2: network1{''.join(stack)}:")
+    print(f"--- --- data2: network2{''.join(stack)}:")
     print(f"    {[device['name'] for device in current_data2]}")
 
 print("\nCompare networks: loops in network --------------------")
@@ -120,4 +120,4 @@ compare_result = compare_data(network_looped_1, network_looped_2)
 print(f"--- compare_data result, should be True: {compare_result}; num comparisons: {num_comparisons}")
 if not compare_result:
     print(f"--- --- data1: network1{''.join(stack)}: {current_data1}")
-    print(f"--- --- data2: network1{''.join(stack)}: {current_data2}")
+    print(f"--- --- data2: network2{''.join(stack)}: {current_data2}")

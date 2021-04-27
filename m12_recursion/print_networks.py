@@ -80,6 +80,7 @@ if __name__ == "__main__":
             network = create_network(num_devices=randint(2, 4), num_subnets=randint(4, 6))
             visited.clear()
             traverse_and_print(network, 4)
+            print("\n\n")
             visited.clear()
             traverse_and_print_flat(network, 0)
 
