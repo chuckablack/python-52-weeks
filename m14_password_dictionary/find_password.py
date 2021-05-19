@@ -10,12 +10,13 @@ while True:
     if not in_password:
         break
 
+    in_password_hashed = hashlib.md5(in_password.strip().encode("utf-8")).hexdigest()
     start_time = datetime.now()
     with open("../../rockyou.conv.txt") as passwords_file:
 
         for index, password in enumerate(passwords_file):
             # print(f"checking: {index} {password.strip()} {in_password}")
-            if in_password == password.strip():
+            if in_password_hashed == hashlib.md5(password.strip().encode("utf-8")).hexdigest():
                 print(f"---> found it! password index: {index} in {(datetime.now()-start_time)}")
                 break
         else:
@@ -37,7 +38,8 @@ with open("../../rockyou.conv.txt") as passwords_file:
 
         sys.stdout.write("\r")
         sys.stdout.write(f" --- writing out entry: {index}")
-        passwords[password.strip()] = {"index": index, "hash": hashlib.md5(password.strip().encode("utf-8"))}
+        password_hashed = hashlib.md5(password.strip().encode("utf-8")).hexdigest()
+        passwords[password_hashed] = {"index": index, "clear": password.strip()}
 print()
 
 while True:
@@ -46,8 +48,9 @@ while True:
     if not in_password:
         break
 
+    in_password_hashed = hashlib.md5(in_password.strip().encode("utf-8")).hexdigest()
     start_time = datetime.now()
-    if in_password in passwords:
+    if in_password_hashed in passwords:
         print(f"---> found it! in {(datetime.now()-start_time)}")
         continue
     else:
@@ -76,8 +79,10 @@ while True:
     if not in_password:
         break
 
+    in_password_hashed = hashlib.md5(in_password.strip().encode("utf-8")).hexdigest()
+
     start_time = datetime.now()
-    pw = db.passwords.find_one({"clear": in_password})
+    pw = db.passwords.find_one({"hash": in_password_hashed})
     if pw:
         print(f"---> found it! in {(datetime.now()-start_time)}")
         continue
