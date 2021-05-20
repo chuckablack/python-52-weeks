@@ -15,7 +15,7 @@ while True:
     with open("../../rockyou.conv.txt") as passwords_file:
 
         for index, password in enumerate(passwords_file):
-            # print(f"checking: {index} {password.strip()} {in_password}")
+
             if in_password_hashed == hashlib.md5(password.strip().encode("utf-8")).hexdigest():
                 print(f"---> found it! password index: {index} in {(datetime.now()-start_time)}")
                 break
@@ -56,7 +56,6 @@ while True:
     else:
         print(f"---> did not find password '{in_password}' in {(datetime.now()-start_time)}")
 
-
 # search for password by matching with passwords in database
 print("\n----- FINDING PASSWORDS: Database option")
 from pymongo import MongoClient
@@ -71,7 +70,7 @@ if not db.passwords.find_one({"clear": "fred"}):
             password_doc = {"clear": password.strip(), "hash": hashlib.md5(password.strip().encode("utf-8")).hexdigest()}
             db.passwords.insert_one(password_doc)
     print("\n--> indexing the collection")
-    db.passwords.create_index("clear")
+    db.passwords.create_index("hash")
 
 while True:
 
