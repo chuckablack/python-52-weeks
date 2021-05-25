@@ -2,23 +2,30 @@ import itertools
 from time import time, sleep
 import argparse
 from multiprocessing import Process, Queue
+import psutil
+import sys
 
-parser = argparse.ArgumentParser(description="Number of processes for brute force")
-parser.add_argument("-processes", default=2, help="Number of processes to use")
+parser = argparse.ArgumentParser(description="brute force password crack")
+parser.add_argument("-P", "--processes", default=psutil.cpu_count(), help="Number of processes to use")
+parser.add_argument("-N", "--numeric", default=True, help="Whether to use numerics", action="store_true")
+parser.add_argument("-A", "--alpha", default=False, help="Whether to use alphabetic", action="store_true")
+parser.add_argument("-S", "--special", default=False, help="Whether to use special chars", action="store_true")
+
 args = parser.parse_args()
 num_processes = int(args.processes)
-
-import psutil
-print(f"number of cores: {psutil.cpu_count()}")
+numeric = args.numeric
+alpha = args.alpha
+special = args.special
 
 
 def check_password(bf_request_queue, bf_response_queue, bf_terminate_queue):
 
     while True:
 
-        print(f"oooo waiting for message")
         check_info = bf_request_queue.get()
-        print(f"---> received message from queue: {check_info}")
+
+        if "exit" in check_info:
+            break
 
         first_char = check_info["first_char"]
         chars = check_info["chars"]
@@ -26,23 +33,21 @@ def check_password(bf_request_queue, bf_response_queue, bf_terminate_queue):
         actual_password = check_info["actual_password"]
 
         for next_chars in itertools.product(chars, repeat=pw_length-1):
-            # print(f"---> constructing password: {first_char} plus {next_chars}")
             test_password = first_char + ''.join(next_chars)
+
+            # sys.stdout.write("\r")
+            # sys.stdout.write(f"-- testing: {test_password}")
+
             if test_password == actual_password:
-                bf_response_queue.put({"found": True, "pw": test_password, "time": time()})
+                bf_response_queue.put({"found": True, "pw": actual_password, "time": time()})
                 break
 
             if not bf_terminate_queue.empty():
-                print(f"~~~~ [{first_char}] terminating as requested")
-                bf_response_queue.put({"found": False, "pw": test_password, "time": None})
+                bf_response_queue.put({"found": False, "pw": actual_password, "time": None})
                 break
 
         else:
-            print(f"---! [{first_char}] password not found")
-            bf_response_queue.put({"found": False, "pw": test_password, "time": None})
-
-        # bf_response_queue.put({"found": False, "pw": "", "time": time()})
-        # print(f"---! Unable to find password of length: {pw_length} starting with {first_char}")
+            bf_response_queue.put({"found": False, "pw": actual_password, "time": None})
 
 
 def main():
@@ -51,11 +56,14 @@ def main():
     bf_response_queue = Queue()
     bf_terminate_queue = Queue()
 
-    chars = "0123456789"
+    chars = ""
+    if numeric: chars += "0123456789"
+    if alpha:   chars += "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    if special: chars += "`~!@#$%^&*(_-+={[}]|\\:;\"\'<,>.?/"
 
+    print(f"\nsearch characters: {chars}\n")
     bf_processes = list()
     for proc_num in range(0, num_processes):
-        print(f"---> starting process number {proc_num}")
         proc = Process(target=check_password, args=(bf_request_queue, bf_response_queue, bf_terminate_queue))
         proc.start()
         print(f"---> process number {proc_num} started")
@@ -63,8 +71,12 @@ def main():
 
     while True:
 
-        password = input("Password:  ")
-        if not password: exit()
+        password = input("\nPassword:  ")
+        if not password:
+            for _ in bf_processes:
+                bf_request_queue.put({"exit": True})
+            print("\n... exiting brute force password finder")
+            break
 
         time_start = time()
         for char in chars:
@@ -75,15 +87,14 @@ def main():
             check_info["pw_length"] = len(password)
             check_info["actual_password"] = password
 
-            print(f"---> putting message for char: {char} onto queue: {check_info}")
             bf_request_queue.put(check_info)
 
         for _ in chars:
             rsp_info = bf_response_queue.get()
 
             if rsp_info["found"]:
-                print(f"---> FOUND PASSWORD: {rsp_info['pw']}")
-                print(f"found password in {rsp_info['time']-time_start:.3f}")
+                print(f"\n---> FOUND PASSWORD: {rsp_info['pw']}")
+                print(f"   +---> found password in {rsp_info['time']-time_start:.3f}")
                 break
 
         else:
@@ -98,9 +109,10 @@ def main():
             while not queue.empty():
                 queue.get()
 
-        print(f"request: {bf_request_queue.qsize()}")
-        print(f"response: {bf_response_queue.qsize()}")
-        print(f"terminate: {bf_terminate_queue.qsize()}")
+        print("\nQueues:")
+        print(f"-- request: {bf_request_queue.qsize()}")
+        print(f"-- response: {bf_response_queue.qsize()}")
+        print(f"-- terminate: {bf_terminate_queue.qsize()}")
 
 
 if __name__ == '__main__':
