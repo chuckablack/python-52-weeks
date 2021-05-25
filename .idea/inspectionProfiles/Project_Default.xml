@@ -4,11 +4,48 @@
     <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="ignoredPackages">
         <value>
-          <list size="1">
-            <item index="0" class="java.lang.String" itemvalue="quokka" />
+          <list size="4">
+            <item index="0" class="java.lang.String" itemvalue="setuptools" />
+            <item index="1" class="java.lang.String" itemvalue="quokka" />
+            <item index="2" class="java.lang.String" itemvalue="pyshark" />
+            <item index="3" class="java.lang.String" itemvalue="lxml" />
           </list>
         </value>
       </option>
     </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E402" />
+          <option value="E501" />
+          <option value="E701" />
+          <option value="E702" />
+          <option value="E271" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyStubPackagesAdvertiser" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <list>
+          <option value="pika-stubs==0.1.3" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyTypeCheckerInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="nmap.nmap.PortScanner._scan_result" />
+          <option value="scapy.all.arping" />
+          <option value="scapy.arping" />
+          <option value="flask_sqlalchemy.SQLAlchemy.Column" />
+          <option value="flask_sqlalchemy.SQLAlchemy.Text" />
+          <option value="flask_sqlalchemy.SQLAlchemy.Integer" />
+          <option value="flask_sqlalchemy.SQLAlchemy.Boolean" />
+          <option value="server.apidoc_models.ApiModels.*" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="YAMLSchemaValidation" enabled="false" level="WARNING" enabled_by_default="false" />
   </profile>
 </component>
