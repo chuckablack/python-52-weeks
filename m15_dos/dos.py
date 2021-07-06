@@ -19,7 +19,7 @@ args = parser.parse_args()
 threadpool_size = int(args.poolsize)
 target = args.target
 delay = int(args.delay)
-attack = args.attack
+attack = args.attack.upper()
 
 if attack not in valid_attacks:
     print(f"Invalid attack type, must be one of: {valid_attacks}")
