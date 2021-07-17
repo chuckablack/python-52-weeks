@@ -33,17 +33,23 @@ for index in range(1, 10):
     device["ip"] = "10.0.0." + str(index)
 
     # NICELY FORMATTED PRINT OF THIS ONE DEVICE
-    print()
-    for key, value in device.items():
-        print(f"{key:>16s} : {value}")
+    # print()
+    # for key, value in device.items():
+    #     print(f"{key:>16s} : {value}")
 
     # ADD THIS DEVICE TO THE LIST OF DEVICES
     devices.append(device)
 
 # USE PPRINT TO PRINT DATA AS-IS
-print("\n----- DEViCES AS LIST OF DICTS --------------------")
+print("\n----- DEVICES AS LIST OF DICTS -------------")
 pprint(devices)
 
+# PRINT SINGLE DEVICE
+print("\n----- SINGLE DEVICE -------------")
+print(devices[4])
+pprint(devices[4])
+
 # USE 'TABULATE' TO PRINT TABLE OF DEVICES
-print("\n----- SORTED DEVICES IN TABULAR FORMAT --------------------")
-print(tabulate(sorted(devices, key=itemgetter("vendor", "os", "version")), headers="keys"))
+print("\n----- DEVICES IN TABULAR FORMAT -------------")
+# print(tabulate(sorted(devices, key=itemgetter("vendor", "os", "version")), headers="keys"))
+print(tabulate(devices, headers="keys"))

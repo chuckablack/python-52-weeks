@@ -2,15 +2,13 @@ from pprint import pprint
 
 
 # DICTIONARY representing a device
-device = {
-    "name": "sbx-n9kv-ao",
-    "vendor": "cisco",
-    "model": "Nexus9000 C9300v Chassis",
-    "os": "nxos",
-    "version": "9.3(3)",
-    "ip": "10.1.1.1",
-    "1": "any data goes here",
-}
+device = dict()
+device["name"] = "sbx-n9kv-ao"
+device["vendor"] = "cisco"
+device["model"] = "Nexus9000 C9300v Chassis"
+device["os"] = "nxos"
+device["version"] = "9.3(3)"
+device["ip"] = "10.1.1.1"
 
 # SIMPLE PRINT
 print("\n_____ SIMPLE PRINT ____________________")
