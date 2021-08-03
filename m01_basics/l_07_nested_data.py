@@ -34,7 +34,7 @@ for key, value in device.items():
         print(f"{key:>16s} : {value}")
     else:
         print(f"{key:>16s} :")
-        for interface in interfaces:
+        for interface in device["interfaces"]:
             print(f"\t\t\t\t\t{interface}")
 
 print()
