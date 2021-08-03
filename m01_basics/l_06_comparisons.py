@@ -8,7 +8,7 @@ print("\n   NAME      VENDOR : OS      IP ADDRESS       VERSION")
 print("  -----     -------   -----   --------------   -----------")
 for device in devices:
     print(
-        f'{device["name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["version"]}'
+        f'{device["Name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["version"]}'
     )
 
 print("\n   NAME      VENDOR : OS      IP ADDRESS       VERSION")
@@ -151,7 +151,3 @@ if d1 == d1_same:
     print(f"    ---> with no __eq__ : success: {d1} points to same object instance as {d1_same}")
 else:
     print(f"    !!! with no __eq__ : oops, didn't expect this")
-
-
-
-

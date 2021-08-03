@@ -5,9 +5,9 @@ from tabulate import tabulate
 from datetime import datetime
 from time import sleep
 from random import choice
-import nmap
+# import nmap
 
-devices = create_devices(25)
+devices = create_devices(10)
 
 print("\n\nUSING PRINT")
 print(devices)
@@ -31,7 +31,11 @@ print("   NAME      VENDOR : OS      IP ADDRESS       LAST HEARD")
 print("  -----     -------   -----   --------------   ----------------------")
 for device in devices:
     print(
-        f'{device["name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["last_heard"][:-4]}'
+        f'{device["name"]:>7}  '
+        f'{device["vendor"]:>10} : '
+        f'{device["os"]:<6}  '
+        f'{device["ip"]:<15}  '
+        f'{device["last_heard"][:-4]}'
     )
 
 print("\nSame thing, but sorted descending by last_heard")
@@ -48,16 +52,16 @@ for device in devices:
     print("done.")
 print("Testing completed")
 
-nm = nmap.PortScanner()
-while True:
-
-    ip = input("\nInput IP address to scan: ")
-    if not ip:
-        break
-
-    print(f"\n--- beginning scan of {ip}")
-    output = nm.scan(ip, '22-1024')
-    print(f"--- --- command: {nm.command_line()}")
-
-    print("----- nmap scan output -------------------")
-    pprint(output)
+# nm = nmap.PortScanner()
+# while True:
+#
+#     ip = input("\nInput IP address to scan: ")
+#     if not ip:
+#         break
+#
+#     print(f"\n--- beginning scan of {ip}")
+#     output = nm.scan(ip, '22-1024')
+#     print(f"--- --- command: {nm.command_line()}")
+#
+#     print("----- nmap scan output -------------------")
+#     pprint(output)
