@@ -8,7 +8,7 @@ print("\n   NAME      VENDOR : OS      IP ADDRESS       VERSION")
 print("  -----     -------   -----   --------------   -----------")
 for device in devices:
     print(
-        f'{device["Name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["version"]}'
+        f'{device["name"]:>7}  {device["vendor"]:>10} : {device["os"]:<6}  {device["ip"]:<15}  {device["version"]}'
     )
 
 print("\n   NAME      VENDOR : OS      IP ADDRESS       VERSION")

@@ -1,6 +1,5 @@
 import time
 
-from tabulate import tabulate
 
 from util.create_utils import create_devices
 
@@ -41,5 +40,5 @@ if __name__ == '__main__':
             dict_search_time = (time.time() - start) * 1000
             print(f"--- ---> in:  {dict_search_time} msec")
             print(f"--- ---> id of device:", id(devices_dict[ip_to_find]))
-
-        print(f"conclusion: dictionary search was {int(list_search_time/dict_search_time)} times faster than list search")
+            print(f"conclusion: dictionary search was {int(list_search_time/dict_search_time)}"
+                  + "times faster than list search")
