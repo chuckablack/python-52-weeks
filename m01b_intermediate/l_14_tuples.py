@@ -19,6 +19,11 @@ if __name__ == '__main__':
     print("    os:", device[3])
     print("    ip:", device[4])
 
+    print("\n----- DEVICE AS TUPLE, FORMATTED WITH FOR LOOP -------------------")
+    item = ("name", "vendor", "model", "os", "ip")
+    for i in range(0, len(device)):
+        print(f"{item[i]:>16s} : {device[i]}")
+
     print("\n----- DEVICE AS NAMED TUPLE --------------------")
     Device = namedtuple('Device', ['name', 'vendor', 'model', 'os', 'ip'])
     device = Device("sbx-n9kv-ao", "cisco", "Nexus9000 C9300v Chassis", "nxos", "10.0.1.1")

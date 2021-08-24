@@ -1,5 +1,5 @@
 import time
-
+from tabulate import tabulate
 
 from util.create_utils import create_devices
 
@@ -11,10 +11,11 @@ if __name__ == '__main__':
     # Create dictionary pointing at those same devices
     devices_dict = dict()
     for device in devices:
+        print(device)
         devices_dict[device["ip"]] = device
 
-    # print("calculating tabular output of devices ...")
-    # print("\n", tabulate(devices, headers="keys"))
+    print("calculating tabular output of devices ...")
+    print("\n", tabulate(devices, headers="keys"))
 
     while True:
 
@@ -40,5 +41,6 @@ if __name__ == '__main__':
             dict_search_time = (time.time() - start) * 1000
             print(f"--- ---> in:  {dict_search_time} msec")
             print(f"--- ---> id of device:", id(devices_dict[ip_to_find]))
+
             print(f"conclusion: dictionary search was {int(list_search_time/dict_search_time)}"
-                  + "times faster than list search")
+                  + " times faster than list search")
