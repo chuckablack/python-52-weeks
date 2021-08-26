@@ -8,26 +8,29 @@ def print_ips():
     print(f"Used IPs:      {used_ips}")
 
 
-for index in range(180, 200, 3):
-    available_ips.add("10.0.1." + str(index))
+# --- Main program --------------------------------------------
+if __name__ == '__main__':
 
-print_ips()
-while True:
-    ip_address = input("\nEnter IP address to allocate: ")
-    if not ip_address:
-        print("\nExiting 'sets' application")
-        exit()
+    for index in range(180, 200, 3):
+        available_ips.add("10.0.1." + str(index))
 
-    if ip_address in available_ips:
+    print_ips()
+    while True:
+        ip_address = input("\nEnter IP address to allocate: ")
+        if not ip_address:
+            print("\nExiting 'sets' application")
+            exit()
 
-        print(f"-- allocated IP address: {ip_address}")
-        available_ips.remove(ip_address)
-        used_ips.add(ip_address)
+        if ip_address in available_ips:
 
-        print_ips()
+            print(f"-- allocated IP address: {ip_address}")
+            available_ips.remove(ip_address)
+            used_ips.add(ip_address)
 
-        if len(available_ips.intersection(used_ips)) > 0:
-            print("\n-- ERROR! one or more IPs in both sets")
+            print_ips()
 
-    else:
-        print("-- IP address not found in available IPs\n")
+            if len(available_ips.intersection(used_ips)) > 0:
+                print("\n-- ERROR! one or more IPs in both sets")
+
+        else:
+            print("-- IP address not found in available IPs\n")
