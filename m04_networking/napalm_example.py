@@ -15,7 +15,7 @@ NXOS_SSH = "nxos_ssh"
 devices = copy.deepcopy(cisco_sandbox_devices)
 
 # make a copy of NXOS, so we can do both SSH and NXAPI connections
-devices[NXOS_SSH] = copy.deepcopy(devices[NXOS])
+# devices[NXOS_SSH] = copy.deepcopy(devices[NXOS])
 
 for device_type, device in devices.items():
 
@@ -44,27 +44,24 @@ for device_type, device in devices.items():
     print(json.dumps(napalm_device.get_interfaces(), sort_keys=True, indent=4))
 
     print("\n----- vlans ----------")
-    print(json.dumps(napalm_device.get_vlans(), sort_keys=True, indent=4))
+    try:
+        print(json.dumps(napalm_device.get_vlans(), sort_keys=True, indent=4))
+    except NotImplementedError as e:
+        print(f"oops, looks like this isn't implemented for {device['hostname']}, error: {e}")
 
     print("\n----- snmp ----------")
-    print(
-        json.dumps(napalm_device.get_snmp_information(), sort_keys=True, indent=4)
-    )
+    print(json.dumps(napalm_device.get_snmp_information(), sort_keys=True, indent=4))
 
     print("\n----- interface counters ----------")
     try:
-        print(
-            json.dumps(
-                napalm_device.get_interfaces_counters(), sort_keys=True, indent=4
-            )
-        )
+        print(json.dumps(napalm_device.get_interfaces_counters(), sort_keys=True, indent=4))
     except NotImplementedError as e:
         print(f"oops, looks like this isn't implemented for {device['hostname']}, error: {e}")
 
     print("\n----- environment ----------")
     try:
         print(json.dumps(napalm_device.get_environment(), sort_keys=True, indent=4))
-    except (KeyError, IOError) as e:
+    except (KeyError, IOError, napalm.pyIOSXR.exceptions.XMLCLIError) as e:
         print(f"oops, looks like there is a NAPALM exception for {device['hostname']}, error: {e}")
 
     napalm_device.close()

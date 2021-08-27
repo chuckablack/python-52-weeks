@@ -1,20 +1,27 @@
 from netmiko import Netmiko
 
 cisco_sandbox_devices = {
-    "ios": {
-        "hostname": "ios-xe-mgmt.cisco.com",
-        "port": 8181,
-        "username": "developer",
+    # "ios": {
+    #     "hostname": "sandbox-iosxe-recomm-1.cisco.com",
+    #     "port": 22,
+    #     "username": "developer",
+    #     "password": "C1sco12345",
+    #     "device_type": "cisco_ios",
+    # },
+    "iosxr": {
+        "hostname": "sandbox-iosxr-1.cisco.com",
+        "port": 22,
+        "username": "admin",
         "password": "C1sco12345",
         "device_type": "cisco_ios",
     },
-    "nxos": {
-        "hostname": "sbx-nxos-mgmt.cisco.com",
-        "port": 8181,
-        "username": "admin",
-        "password": "Admin_1234!",
-        "device_type": "cisco_nxos",
-    },
+    # "nxos": {
+    #     "hostname": "sandbox-nxos-1.cisco.com",
+    #     "port": 22,
+    #     "username": "admin",
+    #     "password": "Admin_1234!",
+    #     "device_type": "cisco_nxos",
+    # },
 }
 
 
