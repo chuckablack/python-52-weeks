@@ -55,6 +55,6 @@ for device_type, device in devices.items():
     print(f"----- compare config for        device {device['hostname']}, type: {device_type} ----------")
     diff = napalm_device.compare_config()
     print(f"----- diff output for           device {device['hostname']}, type: {device_type} ----------")
-    print(diff)
+    print(f"diff:\n{diff}")
 
     napalm_device.close()

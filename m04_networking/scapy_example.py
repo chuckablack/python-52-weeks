@@ -48,9 +48,9 @@ for res in ans.res:
     print(f"---> IP address discovered: {res[0].payload.pdst}")
 
 # DISCOVER HOSTS ON NETWORKING USING ICMP PING
-print("\n\n----- Discovery hosts on network using ICMP ping ---------------------")
-ans, unans = scapy.sr(IP(dst="192.168.254.1-254")/ICMP())
-ans.summary()
+# print("\n\n----- Discovery hosts on network using ICMP ping ---------------------")
+# ans, unans = scapy.sr(IP(dst="192.168.254.1-254")/ICMP())
+# ans.summary()
 
 # TCP PORT SCAN
 print("\n\n----- See what ports are open on a device --------------------")
